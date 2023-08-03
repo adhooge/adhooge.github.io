@@ -2,7 +2,7 @@
 layout: about
 title: about
 permalink: /
-subtitle: PhD student at <a href='www.algomus.fr'>Algomus</a>, <a href='cristal.univ-lille.fr'>CRIStAL</a> lab.
+subtitle: PhD student at <a href='http://www.algomus.fr'>Algomus</a>, <a href='http://cristal.univ-lille.fr'>CRIStAL</a> lab.
 
 profile:
   align: right
@@ -16,10 +16,10 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true  # includes social icons at the bottom of the page
 ---
 
-I am currently pursuing a PhD in Music Information Retrieval (MIR) on _Developing AI tools to assist guitar tabs composition_. This thesis is supervised by <a href='louisbigo.com'>Louis Bigo</a>, <a href='deguernel.discordia.fr'>Ken Déguernel</a> and <a href='cnrs.magiraud.org'>Mathieu Giraud</a>.
+I am currently pursuing a PhD in Music Information Retrieval (MIR) on _Developing AI tools to assist guitar tabs composition_. This thesis is supervised by [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> and <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
 
-My work is made with the support of the French National Research Agency, in the framework of the project TABASCO (<a href='anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
+My work is made with the support of the French National Research Agency, in the framework of the project TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
 
 Besides research, I also teach computer science at _Université de Lille_.
 
-On my free time, I play guitar in a French rock band, play in a brass band, roll dice in TT-RPGs, do some volunteer work at <a href='emmaus-connect.org'>Emmaüs Connect</a>, and I like to read on the little time that is left.
+On my free time, I play guitar in a French rock band, play in a brass band, roll dice in TT-RPGs, do some volunteer work at <a href='http://emmaus-connect.org'>Emmaüs Connect</a>, and I like to read on the little time that is left.
