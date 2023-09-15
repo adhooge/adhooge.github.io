@@ -7,6 +7,10 @@ nav: true
 nav_order: 5
 ---
 
+## 2023 - 2024
+
+- Introduction to Shell and Git, L2 Info, __Université de Lille__.
+
 ## 2022 - 2023
 
 - Internship Mentoring, L3 Info, __Université de Lille__ ;
