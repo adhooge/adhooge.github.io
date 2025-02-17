@@ -20,11 +20,12 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-I am currently pursuing a PhD in Music Information Retrieval (MIR) on _Developing AI tools to assist guitar tabs composition_. This thesis is supervised by [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> and <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
+Je suis actuellement Doctorant en Informatique Appliquée à la Musique et mon sujet porte sur le _Développement d'outils IA pour assister la composition de tablatures de guitare_.
+Cette thèse est supervisée par [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> et <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
 
-My work is made with the support of the French National Research Agency, in the framework of the project TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
+Mon travail est notamment permis par le soutien de l'Agence Nationale de la Recherche (ANR), dans le cadre du pprojet TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
 
-Besides research, I also teach computer science at _Université de Lille_.
+En plus de mes activités de recherche, j'enseigne l'informatique à l'_Université de Lille_.
 
-On my free time, I play guitar in a French rock band, play in a brass band, roll dice in TT-RPGs, and I like to read on the little time that is left.
+Sur mon temps libre, je joue de la guitare, du soubassophone, fais du JDR sur table, et lis quand j'en trouve le temps.
 
