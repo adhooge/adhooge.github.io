@@ -18,11 +18,6 @@ announcements:
   enabled: false # includes a list of news items
   scrollable: true # adds a vertical scroll bar if there are more than 3 news items
   limit: 5 # leave blank to include all the news in the `_news` folder
-
-latest_posts:
-  enabled: false
-  scrollable: true # adds a vertical scroll bar if there are more than 3 new posts items
-  limit: 3 # leave blank to include all the blog posts
 ---
 
 I am currently pursuing a PhD in Music Information Retrieval (MIR) on _Developing AI tools to assist guitar tabs composition_. This thesis is supervised by [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> and <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
