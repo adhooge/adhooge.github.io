@@ -75,12 +75,11 @@ cv:
   volunteer: Volunteer
   work: Work
 footer:
-  copyright: Copyright
+  copyright: 
   last_updated: "Last updated:"
 footer_text: > # the ">" symbol means to ignore newlines until "titles:"
   Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/george-gca/multi-language-al-folio">multi-language-al-folio</a> theme.
   Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
-  Photos from <a href="https://unsplash.com" target="_blank">Unsplash</a>.
 latest_posts: latest posts
 months:
   long:
@@ -155,5 +154,5 @@ search:
     description: Change the theme of the site to System Default
     title: Use system default theme
   theme: Theme
-selected_publications: selected publications
-site_description: A simple, whitespace theme for academics. Based on [*folio](https://github.com/bogoli/-folio) design.
+selected_publications: Selected Publication(s)
+site_description: Professional website of Alexandre D'Hooge. Based on [*folio](https://github.com/bogoli/-folio) design and its [multi-language version](https://github.com/george-gca/multi-language-al-folio).
