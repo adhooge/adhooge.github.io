@@ -7,6 +7,9 @@ description: Other info on my research. You'll find my publications on the corre
 nav: true
 nav_order: 7
 ---
+## 2025
+
+- 18th Feb 2025 : _Machine Learning applied to Guitar Tablatures_, presentation at the focus days [Partition et Numérique (in French)](https://cmbv.fr/fr/evenements/iccare-partition-et-numerique) of [PEPR ICCARE](https://pepr-iccare.fr/).
 
 ## 2024
 
