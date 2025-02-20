@@ -7,6 +7,9 @@ description: Autres informations sur ma recherche. Vous trouverez mes publicatio
 nav: true
 nav_order: 7
 ---
+## 2025
+
+- 18 février 2025 : _L'apprentissage automatique appliqué aux tablatures de guitare_, présentation aux journées d'accélération [Partition et Numérique](https://cmbv.fr/fr/evenements/iccare-partition-et-numerique) du [PEPR ICCARE](https://pepr-iccare.fr/).
 
 ## 2024
 
