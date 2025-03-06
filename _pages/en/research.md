@@ -9,6 +9,7 @@ nav_order: 7
 ---
 ## 2025
 
+- 6th Mar. 2025 : Presentation of my PhD work for the one-day event [Researching Music in Université de Lille (in French)](https://recherches-musique.univ-lille.fr/) ;
 - 18th Feb 2025 : _Machine Learning applied to Guitar Tablatures_, presentation at the focus days [Partition et Numérique (in French)](https://cmbv.fr/fr/evenements/iccare-partition-et-numerique) of [PEPR ICCARE](https://pepr-iccare.fr/).
 
 ## 2024
