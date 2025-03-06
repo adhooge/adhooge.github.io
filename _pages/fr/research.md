@@ -9,6 +9,7 @@ nav_order: 7
 ---
 ## 2025
 
+- 6 mars 2025 : Présentation de mon travail de thèse à la journée [Recherches en musique à l'Université de Lille](https://recherches-musique.univ-lille.fr/) ;
 - 18 février 2025 : _L'apprentissage automatique appliqué aux tablatures de guitare_, présentation aux journées d'accélération [Partition et Numérique](https://cmbv.fr/fr/evenements/iccare-partition-et-numerique) du [PEPR ICCARE](https://pepr-iccare.fr/).
 
 ## 2024
