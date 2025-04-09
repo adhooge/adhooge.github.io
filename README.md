@@ -22,6 +22,8 @@
 [![GitHub stars](https://img.shields.io/github/stars/george-gca/multi-language-al-folio)](https://github.com/george-gca/multi-language-al-folio)
 [![GitHub forks](https://img.shields.io/github/forks/george-gca/multi-language-al-folio)](https://github.com/george-gca/multi-language-al-folio/fork)
 
+[![pt-br](https://img.shields.io/badge/leia--me-pt--br-green.svg)](README.pt-br.md)
+
 </div>
 
 ## User community
