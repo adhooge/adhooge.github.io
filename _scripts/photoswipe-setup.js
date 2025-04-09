@@ -1,4 +1,5 @@
 ---
+lang-exclusive: ['en-us']
 permalink: /assets/js/photoswipe-setup.js
 ---
 import PhotoSwipeLightbox from "{{ site.third_party_libraries.photoswipe-lightbox.url.js }}";
