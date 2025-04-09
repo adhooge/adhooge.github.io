@@ -153,7 +153,7 @@ Cada pessoa pode ter sua própria bio breve, foto de perfil e definir se todas a
 
 A página de publicações é gerada automaticamente a partir da sua bibliografia em BibTex.
 Basta editar [\_bibliography/papers.bib](_bibliography/papers.bib).
-Você também pode adicionar novos arquivos `*.bib` e personalizar a aparência de suas publicações editando [\_pages/publications.md](_pages/publications.md).
+Você também pode adicionar novos arquivos `*.bib` e personalizar a aparência de suas publicações editando [\_pages/LANG/publications.md](_pages/en-us/publications.md).
 Por padrão, as publicações são ordenadas por ano, exibindo as mais recentes primeiro.
 Você pode alterar esse comportamento e outros detalhes na seção `Jekyll Scholar` do arquivo [\_config.yml](_config.yml).
 
@@ -186,9 +186,9 @@ O **al-folio** vem com layouts elegantes para páginas e posts de blog.
 
 O tema permite que você crie posts de blog no estilo do [distill.pub](https://distill.pub/):
 
-[![Pré-visualização Distill](readme_preview/distill.png)](https://george-gca.github.io/multi-language-al-folio/blog/2021/distill/)
+[![Pré-visualização Distill](readme_preview/distill.png)](https://george-gca.github.io/multi-language-al-folio/blog/2018/distill/)
 
-Para mais detalhes sobre como criar posts no estilo distill utilizando as tags `<d-*>`, consulte [o exemplo](https://george-gca.github.io/multi-language-al-folio/blog/2021/distill/).
+Para mais detalhes sobre como criar posts no estilo distill utilizando as tags `<d-*>`, consulte [o exemplo](https://george-gca.github.io/multi-language-al-folio/blog/2018/distill/).
 
 #### Suporte completo para matemática e código
 
