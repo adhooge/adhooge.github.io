@@ -138,7 +138,7 @@ Se a entrada corresponder a uma das combinações dos sobrenomes e dos primeiros
 
 Existem diversas palavras-chave BibTeX personalizadas que você pode utilizar para influenciar a forma como as entradas são exibidas na página:
 
-- `abbr`: Adiciona uma abreviação à esquerda da entrada. Você pode criar links para essas abreviações criando um arquivo venue.yaml na pasta _data e adicionando as entradas correspondentes.
+- `abbr`: Adiciona uma abreviação à esquerda da entrada. Você pode criar links para essas abreviações criando um arquivo venue.yaml na pasta \_data e adicionando as entradas correspondentes.
 - `abstract`: Adiciona um botão “Abs” que expande um campo de texto oculto quando clicado para exibir o resumo.
 - `altmetric`: Adiciona um selo do [Altmetric](https://www.altmetric.com/) (Nota: se o DOI for fornecido, utilize apenas `true`; caso contrário, adicione apenas o identificador altmetric – o link é gerado automaticamente).
 - `annotation`: Adiciona uma mensagem informativa em popover ao final da lista de autores, que pode ser utilizada para esclarecer sobrescritos. HTML é permitido.

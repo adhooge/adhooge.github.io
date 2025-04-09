@@ -5,22 +5,22 @@ Aqui estão algumas perguntas frequentes. Se você tiver uma pergunta diferente,
 Se sua questão estiver relacionada à localização, verifique se ela já não foi respondida na seção de Perguntas & Respostas das [Discussões do GitHub](https://github.com/george-gca/multi-language-al-folio/discussions/categories/q-a). Se não, fique à vontade para perguntar algo novo por lá.
 
 - [Perguntas Frequentes](#perguntas-frequentes)
-    - [Após criar um novo repositório a partir deste template e configurar o repositório, recebo um erro de implantação. O site não deveria ser implantado automaticamente de forma correta?](#após-criar-um-novo-repositório-a-partir-deste-template-e-configurar-o-repositório-recebo-um-erro-de-implantação-o-site-não-deveria-ser-implantado-automaticamente-de-forma-correta)
-    - [Estou usando um domínio personalizado (por exemplo, `foo.com`). Meu domínio personalizado fica em branco nas configurações do repositório após cada implantação. Como posso resolver isso?](#estou-usando-um-domínio-personalizado-por-exemplo-foocom-meu-domínio-personalizado-fica-em-branco-nas-configurações-do-repositório-após-cada-implantação-como-posso-resolver-isso)
-    - [Minha página funciona localmente, mas após a implantação ela não é construída e lança o erro `Unknown tag 'toc'`. Como posso resolver isso?](#minha-página-funciona-localmente-mas-após-a-implantação-ela-não-é-construída-e-lança-o-erro-unknown-tag-toc-como-posso-resolver-isso)
-    - [Minha página funciona localmente, mas após a implantação ela não é exibida corretamente (CSS e JS não são carregados adequadamente). Como posso resolver isso?](#minha-página-funciona-localmente-mas-após-a-implantação-ela-não-é-exibida-corretamente-css-e-js-não-são-carregados-adequadamente-como-posso-resolver-isso)
-    - [O feed Atom não funciona. Por quê?](#o-feed-atom-não-funciona-por-quê)
-    - [Meu site não funciona quando habilito `related_blog_posts`. Por quê?](#meu-site-não-funciona-quando-habilito-related_blog_posts-por-quê)
-    - [Ao tentar implantar, ele solicita credenciais de login do GitHub, mas o GitHub desativou a autenticação por senha e o processo é encerrado com erro. Como posso corrigir isso?](#ao-tentar-implantar-ele-solicita-credenciais-de-login-do-github-mas-o-github-desativou-a-autenticação-por-senha-e-o-processo-é-encerrado-com-erro-como-posso-corrigir-isso)
-    - [Quando executo manualmente o workflow do Lighthouse Badger, ele falha com `Error: Input required and not supplied: token`. Como posso corrigir isso?](#quando-executo-manualmente-o-workflow-do-lighthouse-badger-ele-falha-com-error-input-required-and-not-supplied-token-como-posso-corrigir-isso)
-    - [Meu código funciona bem localmente, mas quando crio um commit e o envio, ele falha com `prettier code formatter workflow run failed for main branch`. Como posso resolver isso?](#meu-código-funciona-bem-localmente-mas-quando-crio-um-commit-e-o-envio-ele-falha-com-prettier-code-formatter-workflow-run-failed-for-main-branch-como-posso-resolver-isso)
-    - [Após atualizar meu site com novo conteúdo, mesmo com uma pequena mudança, a ação do GitHub lança um erro ou exibe um aviso. O que aconteceu?](#após-atualizar-meu-site-com-novo-conteúdo-mesmo-com-uma-pequena-mudança-a-ação-do-github-lança-um-erro-ou-exibe-um-aviso-o-que-aconteceu)
-    - [Estou tentando implantar meu site, mas falha com `Could not find gem 'jekyll-diagrams' in locally installed gems`. Como resolvo isso?](#estou-tentando-implantar-meu-site-mas-falha-com-could-not-find-gem-jekyll-diagrams-in-locally-installed-gems-como-resolvo-isso)
-    - [Como posso atualizar a versão do Academicons no template](#como-posso-atualizar-a-versão-do-academicons-no-template)
-    - [Como posso atualizar a versão do Font Awesome no template](#como-posso-atualizar-a-versão-do-font-awesome-no-template)
-    - [Como posso atualizar a versão do Tabler Icons no template](#como-posso-atualizar-a-versão-do-tabler-icons-no-template)
-    - [O que significam todas essas ações/workflows do GitHub?](#o-que-significam-todas-essas-açõesworkflows-do-github)
-    - [Como posso usar o ID do Google Search Console no template?](#como-posso-usar-o-id-do-google-search-console-no-template)
+  - [Após criar um novo repositório a partir deste template e configurar o repositório, recebo um erro de implantação. O site não deveria ser implantado automaticamente de forma correta?](#após-criar-um-novo-repositório-a-partir-deste-template-e-configurar-o-repositório-recebo-um-erro-de-implantação-o-site-não-deveria-ser-implantado-automaticamente-de-forma-correta)
+  - [Estou usando um domínio personalizado (por exemplo, `foo.com`). Meu domínio personalizado fica em branco nas configurações do repositório após cada implantação. Como posso resolver isso?](#estou-usando-um-domínio-personalizado-por-exemplo-foocom-meu-domínio-personalizado-fica-em-branco-nas-configurações-do-repositório-após-cada-implantação-como-posso-resolver-isso)
+  - [Minha página funciona localmente, mas após a implantação ela não é construída e lança o erro `Unknown tag 'toc'`. Como posso resolver isso?](#minha-página-funciona-localmente-mas-após-a-implantação-ela-não-é-construída-e-lança-o-erro-unknown-tag-toc-como-posso-resolver-isso)
+  - [Minha página funciona localmente, mas após a implantação ela não é exibida corretamente (CSS e JS não são carregados adequadamente). Como posso resolver isso?](#minha-página-funciona-localmente-mas-após-a-implantação-ela-não-é-exibida-corretamente-css-e-js-não-são-carregados-adequadamente-como-posso-resolver-isso)
+  - [O feed Atom não funciona. Por quê?](#o-feed-atom-não-funciona-por-quê)
+  - [Meu site não funciona quando habilito `related_blog_posts`. Por quê?](#meu-site-não-funciona-quando-habilito-related_blog_posts-por-quê)
+  - [Ao tentar implantar, ele solicita credenciais de login do GitHub, mas o GitHub desativou a autenticação por senha e o processo é encerrado com erro. Como posso corrigir isso?](#ao-tentar-implantar-ele-solicita-credenciais-de-login-do-github-mas-o-github-desativou-a-autenticação-por-senha-e-o-processo-é-encerrado-com-erro-como-posso-corrigir-isso)
+  - [Quando executo manualmente o workflow do Lighthouse Badger, ele falha com `Error: Input required and not supplied: token`. Como posso corrigir isso?](#quando-executo-manualmente-o-workflow-do-lighthouse-badger-ele-falha-com-error-input-required-and-not-supplied-token-como-posso-corrigir-isso)
+  - [Meu código funciona bem localmente, mas quando crio um commit e o envio, ele falha com `prettier code formatter workflow run failed for main branch`. Como posso resolver isso?](#meu-código-funciona-bem-localmente-mas-quando-crio-um-commit-e-o-envio-ele-falha-com-prettier-code-formatter-workflow-run-failed-for-main-branch-como-posso-resolver-isso)
+  - [Após atualizar meu site com novo conteúdo, mesmo com uma pequena mudança, a ação do GitHub lança um erro ou exibe um aviso. O que aconteceu?](#após-atualizar-meu-site-com-novo-conteúdo-mesmo-com-uma-pequena-mudança-a-ação-do-github-lança-um-erro-ou-exibe-um-aviso-o-que-aconteceu)
+  - [Estou tentando implantar meu site, mas falha com `Could not find gem 'jekyll-diagrams' in locally installed gems`. Como resolvo isso?](#estou-tentando-implantar-meu-site-mas-falha-com-could-not-find-gem-jekyll-diagrams-in-locally-installed-gems-como-resolvo-isso)
+  - [Como posso atualizar a versão do Academicons no template](#como-posso-atualizar-a-versão-do-academicons-no-template)
+  - [Como posso atualizar a versão do Font Awesome no template](#como-posso-atualizar-a-versão-do-font-awesome-no-template)
+  - [Como posso atualizar a versão do Tabler Icons no template](#como-posso-atualizar-a-versão-do-tabler-icons-no-template)
+  - [O que significam todas essas ações/workflows do GitHub?](#o-que-significam-todas-essas-açõesworkflows-do-github)
+  - [Como posso usar o ID do Google Search Console no template?](#como-posso-usar-o-id-do-google-search-console-no-template)
 
 ---
 
@@ -86,7 +86,7 @@ Implementamos suporte para [formatação de código com Prettier](https://pretti
 
 - Se você estiver rodando localmente com `Docker` e utilizando [containers de desenvolvimento](https://github.com/alshedivat/al-folio/blob/main/INSTALL.md#configuracao-local-com-containers-de-desenvolvimento), o Prettier já está incluído.
 - Se você não utiliza Docker, é simples integrá-lo ao seu IDE preferido por meio de uma [extensão](https://prettier.io/docs/en/editors).
-- Se desejar executá-lo manualmente, siga os dois primeiros passos [neste tutorial](https://george-gca.github.io/blog/2023/slidev_for_non_web_devs/) (``Installing node version manager (nvm)`` e ``Installing Node (latest version)``), depois instale-o com `npm install prettier` no diretório do projeto ou globalmente com `npm install -g prettier`. Para executar o Prettier no diretório atual, use `npx prettier . --write`.
+- Se desejar executá-lo manualmente, siga os dois primeiros passos [neste tutorial](https://george-gca.github.io/blog/2023/slidev_for_non_web_devs/) (`Installing node version manager (nvm)` e `Installing Node (latest version)`), depois instale-o com `npm install prettier` no diretório do projeto ou globalmente com `npm install -g prettier`. Para executar o Prettier no diretório atual, use `npx prettier . --write`.
 
 Você também pode desativá-lo para o seu repositório, bastando remover o arquivo [.github/workflows/prettier.yml](https://github.com/alshedivat/al-folio/blob/main/.github/workflows/prettier.yml).
 

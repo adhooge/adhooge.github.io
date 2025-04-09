@@ -248,3 +248,4 @@ Você também pode usar os códigos abaixo para exibir isso em outras páginas.
   {% for repo in site.data.repositories.github_repos %} {% include repository/repo.liquid repository=repo %} {% endfor %}
 </div>
 {% endif %}
+```

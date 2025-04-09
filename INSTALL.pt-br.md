@@ -168,17 +168,17 @@ Se você precisar reimplantar manualmente seu site no GitHub Pages, vá para a a
 2. Netlify: **Adicione um novo site** -> **Importe um projeto existente** -> **GitHub** e dê acesso ao Netlify ao repositório que você acabou de criar.
 3. Netlify: Nas configurações de implantação
 
-  - Defina **Branch to deploy** como `main`
-  - **Base directory** deve estar vazia
-  - Defina **Build command** como `sed -i "s/^\(baseurl: \).*$/baseurl:/" _config.yml && bundle exec jekyll build`
-  - Defina **Publish directory** como `_site`
+- Defina **Branch to deploy** como `main`
+- **Base directory** deve estar vazia
+- Defina **Build command** como `sed -i "s/^\(baseurl: \).*$/baseurl:/" _config.yml && bundle exec jekyll build`
+- Defina **Publish directory** como `_site`
 
 4. Netlify: Adicione as seguintes duas **variáveis de ambiente**
 
-  - | Chave          | Valor                                                                                  |
-    | -------------- | -------------------------------------------------------------------------------------- |
-    | `JEKYLL_ENV`   | `production`                                                                           |
-    | `RUBY_VERSION` | defina como a versão do Ruby encontrada em `.github/workflows/deploy.yml` (por exemplo, `3.3.5`) |
+- | Chave          | Valor                                                                                            |
+  | -------------- | ------------------------------------------------------------------------------------------------ |
+  | `JEKYLL_ENV`   | `production`                                                                                     |
+  | `RUBY_VERSION` | defina como a versão do Ruby encontrada em `.github/workflows/deploy.yml` (por exemplo, `3.3.5`) |
 
 5. Netlify: Clique em **Deploy** e aguarde o site ser publicado. Se você quiser usar seu próprio nome de domínio, siga os passos nesta [documentação](https://docs.netlify.com/domains-https/custom-domains/).
 
