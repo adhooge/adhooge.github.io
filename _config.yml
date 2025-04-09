@@ -165,14 +165,18 @@ include: ["_pages", "_scripts"]
 exclude:
   - bin/
   - CONTRIBUTING.md
+  - CONTRIBUTING.pt-br.md
   - CUSTOMIZE.md
+  - CUSTOMIZE.pt-br.md
   - Dockerfile
   - docker-compose.yml
   - docker-compose-slim.yml
   - FAQ.md
+  - FAQ.pt-br.md
   - Gemfile
   - Gemfile.lock
   - INSTALL.md
+  - INSTALL.pt-br.md
   - LICENSE
   - lighthouse_results/
   - package.json
@@ -181,6 +185,7 @@ exclude:
   - _pages/pt-br/about_einstein.md
   - purgecss.config.js
   - README.md
+  - README.pt-br.md
   - readme_preview/
   - UPGRADING.md
   - vendor
