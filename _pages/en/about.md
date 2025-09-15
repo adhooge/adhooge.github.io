@@ -20,11 +20,15 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-I am currently pursuing a PhD in Music Information Retrieval (MIR) on _Developing AI tools to assist guitar tabs composition_. This thesis is supervised by [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> and <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
+I am currently **looking for a postdoctoral position in Music Information Retrieval (MIR)**. While I have a stronger expertise in symbolic music processing and guitar-related research topics, I am open to working on new subjects.
 
-My work is made with the support of the French National Research Agency, in the framework of the project TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
+***
+I will be defending on October 9th 2025 my PhD on _Assisting Western Popular Music Guitar Practice and Tablature Composition with Machine Learning_.
+This thesis has been supervised by [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> and <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
 
-Besides research, I also teach computer science at _Université de Lille_.
+My work has been made possible thanks to the support of the French National Research Agency, in the framework of the project TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
+
+Besides research, I also taught computer science at _Université de Lille_.
 
 On my free time, I play guitar in a French rock band, play in a brass band, roll dice in TT-RPGs, and I like to read on the little time that is left.
 
