@@ -1,6 +1,6 @@
 ---
 page_id: cv
-layout: cv
+layout: none
 permalink: /cv/
 title: cv
 nav: true
@@ -11,4 +11,4 @@ toc:
   sidebar: left
 ---
 
-<meta http-equiv="refresh" content="0; url=/assets/pdf/en/CV.pdf">
+<meta http-equiv="refresh" content="0; url=/assets/pdf/fr/CV.pdf">
