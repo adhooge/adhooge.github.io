@@ -22,7 +22,7 @@ ninja.data = [{
     },
   },{id: "nav-publications",
           title: "publications",
-          description: "publications par catégories en ordre chronologique inversé.  page générée par jekyll-scholar. tous les articles devraient être disponibles sur HAL.",
+          description: "publications par catégories en ordre chronologique inversé.  page générée par jekyll-scholar.",
           section: "menu de navigation",
           handler: () => {
             window.location.href = "/fr/publications/";
