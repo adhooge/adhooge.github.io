@@ -27,7 +27,7 @@ Je soutiendrai ma thèse de doctorat le 9 octobre 2025, dont le sujet est : _Ass
 
 Cette thèse a été supervisée par [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> et <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
 
-Mon travail a notamment été permis par le soutien de l'Agence Nationale de la Recherche (ANR), dans le cadre du pprojet TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
+Mon travail a notamment été permis par le soutien de l'Agence Nationale de la Recherche (ANR), dans le cadre du projet TABASCO (<a href='http://anr.fr/Projet-ANR-22-CE38-0001'>ANR-22-CE38-0001</a>).
 
 En plus de mes activités de recherche, j'ai enseigné l'informatique à l'_Université de Lille_.
 
