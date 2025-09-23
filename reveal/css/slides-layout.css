@@ -1,0 +1,126 @@
+/* --- configurable vars --- */
+:root {
+    --title-font-size: clamp(24px, 3.4vw, 42px);
+    --title-weight: 700;
+    --title-letter-spacing: -0.01em;
+    --title-color: var(--r-link-color, #fff);
+    /* plays nice with themes */
+    --body-max-width: 80ch;
+    /* feel free to adjust */
+    --gap: 1.2rem;
+    --title-bottom-gap: 1.2rem;
+    /* space between title and body */
+}
+
+/* Make each slide a tidy 2-row grid: title on top, body below */
+.reveal .slides section.slide {
+    display: grid !important;
+    grid-template-rows: auto auto 1fr;
+    align-content: start;
+    /* keep content at the top */
+    row-gap: var(--title-bottom-gap);
+    padding-top: 0;
+    /* rely on the title gap instead of padding */
+    height: 100%;
+    /* ensures grid rows behave consistently */
+}
+
+/* Title positioning only */
+.reveal .slides section.slide .slide-title {
+    grid-row: 1;
+    justify-self: start;
+    /* always stick to left */
+    align-self: start;
+    /* always stick to top */
+    text-align: left;
+    /* text itself left-aligned */
+    margin: 0;
+    /* optional: remove extra top margin if it creates gap */
+}
+
+/* Title positioning only */
+.reveal .slides section.slide .slide-subtitle {
+    grid-row: 2;
+    justify-self: left;
+    /* always stick to left */
+    align-self: start;
+    /* always stick to top */
+    text-align: left;
+    /* text itself left-aligned */
+    margin: 0;
+    /* optional: remove extra top margin if it creates gap */
+}
+
+/* Body container lives under the title */
+.reveal .slides section.slide .slide-body {
+    grid-row: 3;
+    width: 100%;
+    display: grid;
+    /* lets us use justify-self neatly */
+}
+
+/* Optional: constrain text width for nicer reading */
+.reveal .slides section.slide .slide-body>* {
+    max-width: var(--body-max-width);
+}
+
+/* Alignment utilities for the body area */
+.reveal .slides section.slide .slide-body.align-left {
+    justify-items: start;
+    text-align: left;
+}
+
+.reveal .slides section.slide .slide-body.align-center {
+    justify-items: center;
+    text-align: center;
+}
+
+.reveal .slides section.slide .slide-body.align-centertop {
+    justify-items: start;
+    text-align: center;
+}
+
+.reveal .slides section.slide .slide-body.align-right {
+    justify-items: end;
+    text-align: right;
+}
+
+/* A bit of vertical spacing between body children */
+.reveal .slides section.slide .slide-body>*+* {
+    margin-top: var(--gap);
+}
+
+/* Make lists look tidy within the body */
+.reveal .slides section.slide .slide-body ul,
+.reveal .slides section.slide .slide-body ol {
+    margin: 0;
+    padding-left: 1.25em;
+    /* still respects body alignment via text-align */
+}
+
+/* Images scale nicely and respect body max-width */
+.reveal .slides section.slide .slide-body img {
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+/* Code blocks play nice with the layout */
+.reveal .slides section.slide .slide-body pre {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+
+/* Reset Reveal's vertical centering for nested slides used as body */
+.reveal .slides section.slide section.slide-body {
+    display: block;
+    /* don't treat as a grid/slide */
+    margin: 0;
+    padding: 0;
+    align-self: start;
+    /* push up under subtitle */
+    justify-self: start;
+    height: auto;
+    /* avoid filling available space */
+}
