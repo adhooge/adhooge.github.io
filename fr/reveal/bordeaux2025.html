@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Séminaire TAD – Assisting WPM Guitar Practice and Tablature Composition with ML</title>
+
+    <meta name="description"
+        content="Slideshow Presentation for the PhD Defence of Alexandre D'Hooge, October 9th 2025.">
+    <meta name="author" content="Alexandre D'Hooge">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="mytheme.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <!-- Custom slides layout-->
+    <link rel="stylesheet" href="css/slides-layout.css">
+    <style>
+        span .anim {
+            display: inline;
+            vertical-align: baseline;
+            /* keep them aligned with the text baseline */
+            white-space: pre;
+            /* preserve the trailing space in "Algorithmic " */
+        }
+
+        .imgleft {
+            float: left;
+        }
+
+        /* Table class with no lines */
+        table.no-borders,
+        table.no-borders td,
+        table.no-borders th {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        table.no-borders {
+            border-collapse: collapse;
+        }
+
+        ol {
+            list-style-type: none;
+            counter-reset: item;
+            margin: 0;
+            padding: 0;
+        }
+
+        ol>li {
+            display: table;
+            counter-increment: item;
+            margin-bottom: 0.6em;
+        }
+
+        ol>li:before {
+            content: counters(item, ".") ". ";
+            display: table-cell;
+            padding-right: 0.6em;
+        }
+
+        li ol>li {
+            margin: 0;
+        }
+
+        li ol>li:before {
+            content: counters(item, ".") " ";
+        }
+
+        ol li.done {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        li a {
+            color: rgba(0, 0, 0, 1) !important;
+        }
+
+        li.done a {
+            color: rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Create a container fixed at the bottom */
+        .reference-container {
+            position: fixed;
+            bottom: 1em;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25em;
+            /* spacing between items */
+            align-items: flex-start;
+            /* align left */
+            font-size: 70%;
+            pointer-events: none;
+            /* ensures it doesn't block clicks */
+        }
+
+        /* Each reference is now just inline/flowing */
+        .reference {
+            text-align: left;
+            pointer-events: auto;
+            /* re-enable interaction if needed */
+        }
+
+        /* Each reference is now just inline/flowing */
+        .referencedummy {
+            text-align: left;
+            pointer-events: auto;
+            /* re-enable interaction if needed */
+        }
+
+        #reference-list {
+            text-align: left;
+        }
+
+        #reference-list li {
+            margin-bottom: 0.5em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section id="foreword">
+                <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <img src="media/ulille.png" alt="Université de Lille logo" style="width: auto; height: 15vh;">
+                    <img src="media/logocristal.png" alt="Laboratoire CRIStAL logo" style="width: auto; height: 15vh;">
+                    <img src="media/Centrale_Lille.png" alt="Centrale Lille logo" style="width: auto; height: 15vh;">
+                    <img src="media/CNRS.png" alt="CNRS logo" style="width: auto; height: 15vh;">
+                </div>
+                <br>
+                <h3>Assisting Western Popular Music Guitar Practice and Tablature Composition with Machine Learning</h3>
+                <br>
+                <p>
+                    Alexandre D'Hooge - 25 Septembre 2025
+                </p>
+                <p>Séminaire TAD</p>
+                <br>
+                <img src="media/Bordeaux2025/LogoLaBRI.png" alt="Logo LaBRI" style="max-width: 50vw;">
+            </section>
+
+            <section class="slide">
+                <!-- Cadre de la thèse -->
+                <section>
+                    <h3 class="slide-title">Context</h3>
+                    <div style="height: 90vh;">
+                        <img src="media/Bordeaux2025/vanHalenSnapshot.png" alt="TODO"
+                            data-preview-video="media/Bordeaux2025/vanhalencut.mp4" width="1920" height="1080"
+                            style="max-height: 90%; width: auto;">
+                        <div style="text-align: center;">
+                            <small><em>Hot for Teacher</em> by Van Halen. <br>Transcription and Performance: Mr.
+                                Tabs.</small>
+                        </div>
+                    </div>
+                </section>
+                <section data-background-image="media/Bordeaux2025/vanHalenSnapshot.png">
+                </section>
+                <section>
+                    <h3 class="slide-title">Context</h3>
+                    <div data-auto-animate-id="maindiv"
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div>
+
+                            <img src="media/Bordeaux2025/teaserFig.png" alt="TODO" data-auto-animate-id="teaser"
+                                style="max-width: 80vw; height: auto;">
+                        </div>
+                        <div>
+                            <b>ANR TABASCO Project</b> <br>
+                            <ul
+                                style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-items: center;">
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/louisb.jpg" alt="Louis Bigo"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Louis Bigo
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/baptiste.jpg" alt="Baptiste Bacot"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Baptiste Bacot
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/louisc.jpeg" alt="Louis Couturier"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Louis Couturier
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/ken.png" alt="Ken Déguernel"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Ken Déguernel
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/leo.jpeg" alt="Léo Dupouey"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Léo Dupouey
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/mathieu.jpg" alt="Mathieu Giraud"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Mathieu Giraud
+                                    </div>
+                                </li>
+                                <li style="text-align: center; grid-column: span 2;">
+                                    <img src="media/Bordeaux2025/tabascopics/benoit.jpeg" alt="Benoît Navarret"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Benoît Navarret
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="text-align: left;">
+                        <small>
+                            <a href="https://www.flaticon.com/free-icons/machine-learning"
+                                title="machine learning icons">ML icon by Eucalyp</a>
+                        </small>
+                    </div>
+                </section>
+            </section>
+
+
+            <section class="slide">
+                <section data-auto-animate data-auto-animate-restart style="display: flex; align-items: center;">
+                    <h3>“Assisting Western Popular Music Guitar Practice and Tablature
+                        Composition
+                        with
+                        Machine
+                        Learning”</h3>
+                </section>
+                <section class="slide" data-auto-animate>
+                    <h3 class="slide-title">Introduction</h3>
+                    <h4 style="font-weight: normal;">“Assisting <b>Western Popular Music</b> Guitar Practice
+                        and Tablature Composition
+                        with
+                        Machine
+                        Learning”</h4>
+                    <div class="slide-body align-left fragment fade-in">
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-direction: row;">
+                            <div>
+                                <ul>
+                                    <li>20th Century and onwards;</li>
+                                    <li>Stems from early Blues and Jazz music;</li>
+                                    <li>Based on elements of Western music theory and tradition.</li>
+                                    <li>Examples: Rock, Pop, Metal, EDM, Hip-Hop, Funk.</li>
+                                </ul>
+
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; flex-direction: column; width: 65vw; min-height: 35px;">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide" data-auto-animate>
+                    <h3 class="slide-title">Introduction</h3>
+                    <h4 style="font-weight: normal;">“Assisting Western Popular Music <b>Guitar Practice
+                            and Tablature Composition</b>
+                        with
+                        Machine
+                        Learning”</h4>
+                    <div class="slide-body align-left">
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-direction: row;">
+                            <div>
+                                <ul>
+                                    <li>20th Century and onwards;</li>
+                                    <li>Stems from early Blues and Jazz music;</li>
+                                    <li>Based on elements of Western music theory and tradition.</li>
+                                    <li>Examples: Rock, Pop, Metal, EDM, Hip-Hop, Funk.</li>
+                                </ul>
+
+                            </div>
+                            <div style="display: flex; align-items: center; flex-direction: column;">
+                                <img src="media/Bordeaux2025/guitar-cropped.png" style="width: auto; max-height: 40vh;">
+                                <br>
+                                <img src="media/Bordeaux2025/e4Tab.png" alt="TODO"
+                                    style="max-width: 25vw; height: auto;" class="fragment fade-in">
+                            </div>
+                        </div>
+                        <br>
+                        <span><small>Guitar image by <a
+                                    href="https://pixabay.com/users/obbilder-3192627/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1669233">obBilder</a>
+                                from <a
+                                    href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1669233">Pixabay</a></small></span>
+                    </div>
+                </section>
+            </section>
+            <section class="slide" id="tablature">
+                <h3 class="slide-title">Introduction</h3>
+                <h4 style="text-align: left;">Tablature Notation</h4>
+                <section>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-direction: column;">
+                        <img src="media/Bordeaux2025/asciiTab.png" alt="">
+                        <br>
+                        <img src="media/Bordeaux2025/satriani.png" alt="TODO"
+                            data-preview-video="media/Bordeaux2025/satriani.mp4">
+                    </div>
+                    <div style="text-align: left;">
+                        <small><em>Flying in a Blue Dream</em>, Joe Satriani.</small>
+                    </div>
+                </section>
+            </section>
+
+            <section data-background-image="media/Bordeaux2025/interface_guitarPro.png" data-background-size="100%">
+                <img src="media/Bordeaux2025/tabUsage.png" alt="TODO"
+                    style="max-width: 80vw; height: auto; border: 100px solid #FFFFFF" class="fragment fade-in"
+                    data-fragment-index="1">
+            </section>
+
+            <section class="slide">
+                <h3 class="slide-title">Outline of this presentation</h3>
+
+                <div class="slide-body align-center r-stack">
+                    <img src="media/Bordeaux2025/plan0.png" alt="TODO" style="max-height: 100vh; width: auto;"
+                        class="fragment fade-out" data-fragment-index="1">
+                    <img src="media/Bordeaux2025/plan1.png" alt="TODO" style="max-height: 100vh; width: auto;"
+                        class="fragment fade-in" data-fragment-index="1">
+                </div>
+            </section>
+            <section class="slide">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle" id="datasets">Datasets</h4>
+                <div
+                    style="display: flex; text-align: center; justify-content: space-evenly; align-items: center; flex-direction: row; align-items: center; height: 80%;">
+
+                    <div
+                        style="height: 100%; text-align: left; display: flex; flex-direction: column; justify-content: space-evenly;">
+                        <img src="media/Bordeaux2025/mysongbook-logo.png" alt="TODO"
+                            style="max-height: 15%; width: auto;">
+                        <ul>
+                            <span><a href="https://mysongbook.com" target="_blank">mysongbook.com</a></span>
+                            <li>Proprietary;</li>
+                            <li>Professional Transcriptions;</li>
+                            <li>2115 <code>.gp</code> files;</li>
+                            <li>308 different artists.</li>
+                        </ul>
+                    </div>
+                    <div
+                        style="height: 100%; text-align: left; display: flex; flex-direction: column; justify-content: space-evenly;">
+                        <img src="media/Bordeaux2025/dadagp.png" alt="TODO"
+                            style="max-height: 25%; width: auto; border: 3px solid #0005;">
+                        <ul>
+                            <li>Open for Research;</li>
+                            <li>Amateur Transcriptions;</li>
+                            <li>26 181 <code>.gp5</code> and tokenised files;</li>
+                            <li>882 different artists.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="reference-container">
+                    <cite class="reference">Cournut et al. (2021), <em>What are the most used guitar
+                            positions?</em>, DLFM.</cite>
+                    <cite class="referencedummy">
+                        Régnier et al. (2021), <em>Identification of Rhythm Guitar Sections in Symbolic Tablatures</em>,
+                        ISMIR.
+                    </cite>
+                    <cite class="reference">Sarmento et al. (2021), <em>DadaGP: A Dataset of Tokenized GuitarPro
+                            Songs
+                            for Sequence Models</em>, ISMIR.</cite>
+                </div>
+            </section>
+
+
+            <section class="slide" id="diagrams">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Guitar Chord Diagrams</h4>
+                <div>
+                    <img src="media/Bordeaux2025/diagram.png" alt="TODO" width="784" height="336"
+                        style="max-width: 100%; max-height: 100%; width: 90%; height: auto;">
+                </div>
+
+            </section>
+
+            <section class="slide" id="rhythmguitar">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Rhythm Guitar Tablature Continuation Through Picking Pattern Generation
+                </h4>
+                <section>
+                    <div>
+                        <img src="media/Bordeaux2025/rhythmguitarTask.png" alt="TODO"
+                            style="width: 55vw; height: auto;">
+                    </div>
+                    <div>
+                        <ul>
+                            <li class="fragment" data-fragment-index="1">Suggest possible continuation given a tablature
+                                prompt and a chord
+                                progression;</li>
+                            <li class="fragment" data-fragment-index="2">If any chord position is missing, it can be
+                                suggested automatically
+                                (D'Hooge et al. 2024).</li>
+                        </ul>
+                    </div>
+
+                    <div class="reference-container">
+                        <cite class="reference-dummy">Publication in preparation.</cite>
+                        <cite class="reference fragment" data-fragment-index="2">D'Hooge et al. (2024), <em>Guitar Chord
+                                Diagram Suggestion for Western
+                                Popular Music</em>, SMC.</cite>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div>
+                        <div data-id="animals">
+                            <img src="media/Bordeaux2025/risingSunSnapshot.png" alt="TODO"
+                                data-preview-video="media/Bordeaux2025/risingSunCut.mp4"
+                                style="width: 70vw; height: auto;">
+                            <br>
+                            <span><small><em>House of the Rising Sun</em>, The Animals.</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div style="display: flex; flex-direction: row;">
+                        <div data-id="animals" data-auto-animate-easing="step-start">
+                            <img src="media/Bordeaux2025/risingSunSnapshot.png" alt="TODO"
+                                data-preview-video="media/Bordeaux2025/risingSunCut.mp4"
+                                style="width: 70vw; height: auto;">
+                            <br>
+                        </div>
+                        <div style="width: 30vw;">
+                            <ul>
+                                <li>
+                                    Accompaniment parts in WPM are often repetitive;
+                                </li>
+                                <li class="fragment" data-fragment-index="2">Composers/Transcribers rely heavily on
+                                    copy-pasting;</li>
+                                <li class="fragment" data-fragment-index="3">Suggesting continuations can ease the
+                                    writing process and possibly
+                                    increase variations;</li>
+                                <li class="fragment" data-fragment-index="4">Previous work lack chord progression
+                                    controls (except McVicar et
+                                    al. 2014).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="reference-container">
+                        <cite class="reference fragment" data-fragment-index="2">Bacot et al. (2024), <em>Enjeux du
+                                logiciel de
+                                tablatures dans l'acte de création en musiques actuelles : méthode d'entretien et
+                                analyse
+                                d'une pratique</em>, JIM.</cite>
+                        <cite class="reference fragment" data-fragment-index="4">McVicar et al. (2014),
+                            <em>AutoRhythmGuitar:
+                                Computer-aided composition
+                                for Rhythm Guitar in the Tab Space</em>, ICMC. </cite>
+                        <cite class="reference fragment" data-fragment-index="4">Chen et al. (2020), <em>Automatic
+                                Composition of
+                                Guitar Tabs by
+                                Transformers and Groove Modeling</em>, ISMIR.</cite>
+                        <cite class="reference fragment" data-fragment-index="4">Loth et al. (2023), <em>ProgGP: From
+                                GuitarPro
+                                Tablature Neural
+                                Generation To Progressive Metal Production</em>, CMMR.</cite>
+                        <cite class="reference fragment" data-fragment-index="4">Sarmento et al. (2023), <em>GTR-CTRL:
+                                Instrument
+                                and Genre
+                                Conditioning
+                                for Guitar-Focused Music Generation with Transformers</em>, EvoMUSART.</cite>
+                    </div>
+                </section>
+                <section style="display: flex; align-items: center; text-align: center;">
+                    <br>
+                    <br>
+                    <br>
+                    <div style="height: 100%; width: 100%;">
+
+                        <img src="media/Bordeaux2025/pickingPattern.png" alt="TODO" style="width: 100%; height: auto;"
+                            data-preview-image>
+                    </div>
+                </section>
+            </section>
+            <section class="slide">
+                <h3 class="slide-title">Assist Composition</h3>
+                <section>
+                    <br>
+                    <br>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-evenly;">
+
+                        <div>
+
+                            <span>Rule-Based Model</span>
+                            <div class="r-stack" style="width: 50vw; max-height: 100vh;">
+                                <img src="media/Bordeaux2025/ruleBased0.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                                <img src="media/Bordeaux2025/ruleBased1.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                                <img src="media/Bordeaux2025/ruleBased2.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                                <img src="media/Bordeaux2025/ruleBased3.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                            </div>
+                        </div>
+                        <div>
+                            <span class="fragment">Transformer Model</span>
+                            <div class="r-stack" style="width: 50vw; max-height: 100vh;">
+                                <img src="media/Bordeaux2025/gptModel0.png" alt="TODO"
+                                    style="max-width: 95%; height: auto;" class="fragment">
+                                <img src="media/Bordeaux2025/gptModel1.png" alt="TODO"
+                                    style="max-width: 95%; height: auto;" class="fragment">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Fader icon <a href="https://www.flaticon.com/free-icons/agency" title="agency icons">Agency icons created by Ralf Schmitzer - Flaticon</a>-->
+                    <!--Transformer icon by https://www.iconfinder.com/pocike-->
+                </section>
+                <section>
+                    <h5 style="text-align: left;">Online Survey for Subjective Evaluation</h5>
+                    <div style="text-align: left;">
+                        54 participants, biased towards Male from Western Europe, but a good age distribution from 18 to
+                        65+.
+                    </div>
+                    <br>
+                    <div class="slide-body" style="display: flex; justify-content: space-between; align-items: center;">
+                        <ul>
+                            <li>Rate 5 prompts' continuations from:
+                                <ul>
+                                    <li>Reference</li>
+                                    <li>Rule-based</li>
+                                    <li>Transformer</li>
+                                </ul>
+                            </li>
+                            <li>7-point Likert scales on:
+                                <ul>
+                                    <li>Playability</li>
+                                    <li>Consistency</li>
+                                    <li>Interest</li>
+                                    <li>Usability</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <img src="media/Bordeaux2025/rhythmGuitarSnapshot.png" alt="TODO"
+                            data-preview-video="media/Bordeaux2025/test.mp4" width="1200">
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <br>
+                    <img src="media/Bordeaux2025/rhythmguitarUserStudy.png" alt="TODO" width="90%" height="auto">
+                </section>
+                <section data-auto-animate>
+                    <br>
+                    <img src="media/Bordeaux2025/rhythmguitarUserStudy.png" alt="TODO" width="60%" height="auto">
+                    <div>
+                        <ul>
+                            <li>Preference for the rule-based model despite being less controllable;
+                            </li>
+                            <li class="fragment">Training efficiency confirmed for transformer model;</li>
+                            <li class="fragment">Future models should include dedicated tokens for muted notes;</li>
+                            <li class="fragment">Prolonged use of the transformer model might be more appropriate for
+                                its evaluation</li>
+                        </ul>
+
+                    </div>
+                </section>
+            </section>
+            <section class="slide">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Bass Tablature Accompaniment Generation</h4>
+                <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                    <div>
+                        <img src="media/Bordeaux2025/bassGen.png" alt="" style="max-width: 80vw; max-height: 70vh;">
+                    </div>
+                    <div>
+                        <img src="media/Bordeaux2025/olivier.jpeg" alt="Olivier Anoufa"
+                            style="max-width: 200px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+                        <span>Olivier Anoufa</span>
+                    </div>
+                </div>
+
+                <div class="reference-container">
+                    <cite class="reference">Anoufa et al. (2025), <em>Conditional Generation of Bass Guitar Tablature
+                            for
+                            Guitar Accompaniment in Western Popular Music</em>, AIMC.</cite>
+
+                </div>
+            </section>
+
+            <section class="slide" id="bends">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Suggest Bends and Playing Techniques to Lead Guitarists</h4>
+                <section>
+
+                    <div>
+                        <img src="media/Bordeaux2025/goat-1.png" alt="TODO" style="max-width: 100vw; height: auto;">
+                        <audio controls>
+                            <source src="media/Bordeaux2025/polyphia-goat-start.mp3" type="audio/mp3">
+                        </audio>
+                        <br>
+                        <small><em>G.O.A.T.</em>, Polyphia.</small>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div>
+                        <img src="media/Bordeaux2025/guitarBend.webp" alt="">
+                    </div>
+                    <div style="text-align: left; position: fixed; bottom: 0;" data-id="bendsource">
+                        <span><small>Bend photo from <a
+                                    href="https://www.musicradar.com/tuition/guitars/guitar-basics-string-bending-166345">musicradar.com</a>.</small></span>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div>
+
+                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                            <img src="media/Bordeaux2025/guitarBend.webp" alt="" style="max-width: 30vw;">
+                            <img src="media/Bordeaux2025/bendTaxonomy-1.png" alt="">
+                        </div>
+                        <br>
+                        <div style="text-align: left; position: fixed; bottom: 0;" data-id="bendsource">
+                            <span><small>Bend photo from <a
+                                        href="https://www.musicradar.com/tuition/guitars/guitar-basics-string-bending-166345">musicradar.com</a>.</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: column; justify-content: space-between; align-items: center;">
+                        <div style="text-align: left; width: 100vw;">
+
+                            <span>Suggest bends to add expressiveness and increase idiomaticity.</span>
+                        </div>
+                        <div>
+                            <img src="media/Bordeaux2025/chopinNobends.png" alt="TODO" style="width: 100vw;">
+                            <br>
+                            <audio controls>
+                                <source src="media/Bordeaux2025/chopin-noBend.mp3" type="audio/mp3">
+                            </audio>
+                            <br>
+                            <span><small><em>Nocturne Op.9 No.2</em>, Frédéric Chopin.</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div>
+                            <ul>
+                                <li>Feature-based Approach
+                                    <ul>
+                                        <li>Rhythm</li>
+                                        <li>Pitch</li>
+                                        <li>Gesture</li>
+                                    </ul>
+                                </li>
+                                <li>Evaluate a note based on its neighbourhood</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src="media/Bordeaux2025/featurefigBends.png" alt="" style="max-width: 50vw;">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <img src="media/Bordeaux2025/bendSymbols.png" alt="">
+                    </div>
+
+                </section>
+
+                <section>
+                    <div style="display: flex; justify-content: space-between;">
+                        <img src="media/Bordeaux2025/bendsCMatrix.png" alt="TODO">
+                        <div class="fragment">
+
+                            <span>
+
+                                Four most important features:
+                            </span>
+                            <br>
+                            <br>
+                            <ul>
+                                <li>Pitch of current note;</li>
+                                <li>Pitch distance to next note;</li>
+                                <li>Pitch distance to previous note;</li>
+                                <li>Current note's duration.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <video width="80%" height="auto" controls>
+                            <source src="media/Bordeaux2025/chopin-metal.mp4" type="video/mp4">
+                        </video>
+                        <br>
+                        <small><em>Nocturne Op.9 No.2</em>, Frédéric Chopin, arranged by K I L L J E S T E R </small>
+                    </div>
+                </section>
+                <section>
+                    <video width="60%" height="auto" controls>
+                        <source src="media/Bordeaux2025/bend_prediction_demo.mp4" type="video/mp4">
+                    </video>
+                    <br>
+                    <span>Demonstration interface made by Léo Dupouey.</span>
+                </section>
+
+            </section>
+
+            <section>
+                <div>
+                    <img src="media/Bordeaux2025/plan3.png" alt="" style="max-height: 100vh; max-width: 100vw;">
+                </div>
+            </section>
+
+
+            <section class="slide" id="gsc" data-auto-animate>
+                <h3 class="slide-title">Assist Learning and Practice</h3>
+                <section data-auto-animate>
+                    <div>
+                        <span data-id="gscspan">
+                            There are <b>a lot</b> of online resources available to guitarists.
+                        </span>
+                        <br>
+                        <ul>
+                        </ul>
+                    </div>
+
+                </section>
+            </section>
+            <section data-auto-animate data-background-image="media/Bordeaux2025/ultimateGuitar.png">
+                <div style="color: #fff; background-color: rgba(0, 0, 0, 0.9); width: 40vw; text-align: left;">
+                    <span data-id="gscspan">
+                        There are <b>a lot</b> of online resources available to guitarists:
+                    </span>
+                    <br>
+                    <ul>
+                        <li data-id="tabwww">Tab Websites
+                            <ul>
+                                <li>UltimateGuitar;</li>
+                                <li>Songsterr;</li>
+                                <li>911tabs...</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <section data-auto-animate data-background-image="media/Bordeaux2025/fenderPlay.png">
+                <div style="color: #fff; background-color: rgba(0, 0, 0, 0.9); width: 40vw; text-align: left;">
+                    <span data-id="gscspan">
+                        There are <b>a lot</b> of online resources available to guitarists:
+                    </span>
+                    <br>
+                    <ul>
+                        <li data-id="tabwww">Tab Websites
+                            <ul>
+                                <li>UltimateGuitar;</li>
+                                <li>Songsterr;</li>
+                                <li>911tabs...</li>
+                            </ul>
+                        </li>
+                        <li>Online Courses
+                            <ul>
+                                <li>YouTube channels</li>
+                                <li>justinGuitar</li>
+                                <li>Synner</li>
+                                <li>Fender Play...</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <section data-auto-animate data-background-image="media/Bordeaux2025/RocksmithPlus.png">
+                <div style="color: #fff; background-color: rgba(0, 0, 0, 0.9); width: 40vw; text-align: left;">
+                    <span data-id="gscspan">
+                        There are <b>a lot</b> of online resources available to guitarists:
+                    </span>
+                    <br>
+                    <ul>
+                        <li data-id="tabwww">Tab Websites
+                            <ul>
+                                <li>UltimateGuitar;</li>
+                                <li>Songsterr;</li>
+                                <li>911tabs...</li>
+                            </ul>
+                        </li>
+                        <li>Online Courses
+                            <ul>
+                                <li>YouTube channels</li>
+                                <li>justinGuitar</li>
+                                <li>Synner</li>
+                                <li>Fender Play...</li>
+                            </ul>
+                        </li>
+                        <li>Apps
+                            <ul>
+                                <li>Yousician</li>
+                                <li>Simply Guitar</li>
+                                <li>Rocksmith+</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <section class="slide">
+                <h3 class="slide-title">Assist Learning and Practice</h3>
+                <h4 class="slide-subtitle">Difficulty-informed Song Recommendations</h4>
+                <section>
+
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div>
+                            <img src="media/Bordeaux2025/gscStyles-1.png" alt="" style="max-height: 70vh;"
+                                class="fragment" data-fragment-index="8">
+                        </div>
+                        <div>
+                            <img src="media/Bordeaux2025/gscDataset.png" alt="" style="max-width: 30vw;"
+                                class="fragment" data-fragment-index="9">
+                        </div>
+                        <div>
+                            <img src="media/Bordeaux2025/gscLogo.jpg" alt="TODO"
+                                style="max-width: 40vw; max-height: 40vh;">
+                            <ul
+                                style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-items: center;">
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/yohann.jpeg" alt="Yohann Abbou"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Yohann Abbou
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/tabascopics/mathieu.jpg" alt="Mathieu Giraud"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Mathieu Giraud
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/gilles.jpeg" alt="Gilles Guillemain"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Gilles Guillemain
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Bordeaux2025/aurelien.jpeg" alt="Aurélien Jeanneau"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Aurélien Jeanneau
+                                    </div>
+                                </li>
+                                <li style="text-align: center; grid-column: span 2;">
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Zakaria Hassein-Bey
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div style="text-align: left;" class="fragment" data-fragment-index="9">
+                        <small>
+                            <a href="https://www.flaticon.com/free-icons/music" title="music icons">Music icons created
+                                by
+                                Freepik - Flaticon</a>
+                        </small>
+                    </div>
+                </section>
+                <section>
+                    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                        <img src="media/Bordeaux2025/gscAccord-1.png" alt="" style="max-width: 45vw;">
+                        <img src="media/Bordeaux2025/gscRythme-1.png" alt="" style="max-width: 45vw;">
+                    </div>
+                </section>
+                <section>
+                    <div class="r-stack">
+                        <img src="media/Bordeaux2025/userLevelGSC.png" alt="" style="max-width: 90vw;"
+                            class="fragment fade-out" data-fragment-index="0">
+                        <img src="media/Bordeaux2025/gscFormula.png" alt="TODO" class="fragment current-visible"
+                            style="width: 90vw;" data-fragment-index="0">
+                    </div>
+                </section>
+            </section>
+            <section data-background-image="media/Bordeaux2025/gscWebsite.png">
+                <div
+                    style="display: flex; flex-direction: row; align-items: center; justify-content: space-between; width: 100vw;">
+                    <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; max-width: 25vw; padding: 1rem;"
+                        class="fragment">
+                        Algorithm deployed in commercial application.
+                        <br>
+                        <a href="https://www.guitarsocialclub.com">www.guitarsocialclub.com</a>
+                    </div>
+                    <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; max-width: 30vw; padding: 1rem;"
+                        class="fragment">
+                        Recommendation code and data subset released under LGPL and ODBL Licenses.
+                        <br>
+                        <a href="https://gitlab.com/algomus.fr/guitor/">gitlab.com/algomus.fr/guitor</a>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center;" class="fragment">
+
+                    <div style="background-color: rgba(0, 0, 0, 0.9); color: #fff; max-width: 40vw; padding: 1rem;">
+                        <img src="media/Bordeaux2025/gscPath.png" alt="" style="max-width: 100%;">
+                        <br>
+                        <span>A. Jeanneau studied the recommendation of learning paths to add temporal
+                            consistency.</span>
+                    </div>
+                </div>
+
+            </section>
+
+
+
+            <section>
+                <h3>Conclusion and Perspectives</h3>
+                <section>
+                    <div class="slide-body align-center">
+                        <img src="media/Bordeaux2025/plan0.png" alt="TODO" style="max-height: 100vh; width: auto;">
+                    </div>
+                </section>
+
+            </section>
+            <section id="all-references">
+                <h3>References</h3>
+                <ul id="reference-list">
+
+                </ul>
+            </section>
+
+
+        </div>
+
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Also available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            slideNumber: 'c/t',
+
+            width: 1920,
+            height: 1080,
+
+            margin: 0.1,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+        });
+
+    </script>
+    <script>
+        // Collect all references
+        const refs = [];
+        document.querySelectorAll('.reference').forEach(ref => {
+            refs.push(ref.innerHTML.trim());
+        });
+
+        // Populate the final slide
+        const refList = document.getElementById('reference-list');
+        refs.forEach(r => {
+            const li = document.createElement('li');
+            li.innerHTML = r;
+            refList.appendChild(li);
+        });
+    </script>
+
+</body>
+
+</html>
