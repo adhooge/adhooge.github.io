@@ -1,0 +1,1435 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>PhD Defence – Assisting WPM Guitar Practice and Tablature Composition with ML</title>
+
+    <meta name="description"
+        content="Slideshow Presentation for the PhD Defence of Alexandre D'Hooge, October 9th 2025.">
+    <meta name="author" content="Alexandre D'Hooge">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="mytheme.css" id="theme">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <!-- Custom slides layout-->
+    <link rel="stylesheet" href="css/slides-layout.css">
+    <style>
+        span .anim {
+            display: inline;
+            vertical-align: baseline;
+            /* keep them aligned with the text baseline */
+            white-space: pre;
+            /* preserve the trailing space in "Algorithmic " */
+        }
+
+        .imgleft {
+            float: left;
+        }
+
+        /* Table class with no lines */
+        table.no-borders,
+        table.no-borders td,
+        table.no-borders th {
+            border: none !important;
+            outline: none !important;
+            box-shadow: none !important;
+        }
+
+        table.no-borders {
+            border-collapse: collapse;
+        }
+
+        ol {
+            list-style-type: none;
+            counter-reset: item;
+            margin: 0;
+            padding: 0;
+        }
+
+        ol>li {
+            display: table;
+            counter-increment: item;
+            margin-bottom: 0.6em;
+        }
+
+        ol>li:before {
+            content: counters(item, ".") ". ";
+            display: table-cell;
+            padding-right: 0.6em;
+        }
+
+        li ol>li {
+            margin: 0;
+        }
+
+        li ol>li:before {
+            content: counters(item, ".") " ";
+        }
+
+        ol li.done {
+            color: rgba(0, 0, 0, 0.5);
+        }
+
+        li a {
+            color: rgba(0, 0, 0, 1) !important;
+        }
+
+        li.done a {
+            color: rgba(0, 0, 0, 0.5) !important;
+        }
+
+        /* Create a container fixed at the bottom */
+        .reference-container {
+            position: fixed;
+            bottom: 1em;
+            left: 0;
+            right: 0;
+            width: 100%;
+            max-width: 100vw;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25em;
+            /* spacing between items */
+            align-items: flex-start;
+            /* align left */
+            font-size: 70%;
+            pointer-events: none;
+            /* ensures it doesn't block clicks */
+        }
+
+        /* Each reference is now just inline/flowing */
+        .reference {
+            text-align: left;
+            pointer-events: auto;
+            /* re-enable interaction if needed */
+        }
+
+        /* Each reference is now just inline/flowing */
+        .referencedummy {
+            text-align: left;
+            pointer-events: auto;
+            /* re-enable interaction if needed */
+        }
+
+        #reference-list {
+            text-align: left;
+        }
+
+        #reference-list li {
+            margin-bottom: 0.5em;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="reveal">
+
+        <!-- Any section element inside of this container is displayed as a slide -->
+        <div class="slides">
+            <section id="foreword">
+                <div style="display: flex; justify-content: space-between; width: 100%;">
+                    <img src="media/ulille.png" alt="Université de Lille logo" style="width: auto; height: 15vh;">
+                    <img src="media/logocristal.png" alt="Laboratoire CRIStAL logo" style="width: auto; height: 15vh;">
+                    <img src="media/Centrale_Lille.png" alt="Centrale Lille logo" style="width: auto; height: 15vh;">
+                    <img src="media/CNRS.png" alt="CNRS logo" style="width: auto; height: 15vh;">
+                </div>
+                <br>
+                <h3>Assisting Western Popular Music Guitar Practice and Tablature Composition with Machine Learning</h3>
+                <br>
+                <p>
+                    Alexandre D'Hooge - October 9th 2025
+                </p>
+                <small>
+                    <br>
+                    <br>
+                    <table class="no-borders" style="width: 100vw; height: 16em;">
+                        <tr>
+                            <td>Gérard Assayag</td>
+                            <td>Directeur de Recherche</td>
+                            <td>IRCAM</td>
+                            <td>Rapporteur</td>
+                        </tr>
+                        <tr>
+                            <td>Romain Michon</td>
+                            <td>Chargé de Recherche (HDR)</td>
+                            <td>INRIA Lyon</td>
+                            <td>Rapporteur</td>
+                        </tr>
+                        <tr>
+                            <td>Rémi Bardenet</td>
+                            <td>Directeur de Recherche</td>
+                            <td>CNRS</td>
+                            <td>Président du Jury</td>
+                        </tr>
+                        <tr>
+                            <td>Isabel Barbancho</td>
+                            <td>Professeure des Universités</td>
+                            <td>Universidad de Málaga</td>
+                            <td>Examinatrice</td>
+                        </tr>
+                        <tr>
+                            <td>Dorien Herremans</td>
+                            <td>Professeure Associée</td>
+                            <td>Singapore University of Technology and Design</td>
+                            <td>Examinatrice</td>
+                        </tr>
+                        <tr>
+                            <td>Louis Bigo</td>
+                            <td>Professeur des Universités</td>
+                            <td>Bordeaux INP</td>
+                            <td>Co-Directeur</td>
+                        </tr>
+                        <tr>
+                            <td>Mathieu Giraud</td>
+                            <td>Directeur de Recherche</td>
+                            <td>CNRS</td>
+                            <td>Co-Directeur</td>
+                        </tr>
+                        <tr>
+                            <td>Ken Déguernel</td>
+                            <td>Chargé de Recherche</td>
+                            <td>CNRS</td>
+                            <td>Co-Encadrant</td>
+                        </tr>
+                    </table>
+                </small>
+            </section>
+
+            <section class="slide">
+                <!-- Cadre de la thèse -->
+                <section>
+                    <h3 class="slide-title">Context</h3>
+                    <div style="height: 90vh;">
+                        <img src="media/Defence/vanHalenSnapshot.png" alt="TODO"
+                            data-preview-video="media/Defence/vanhalencut.mp4" width="1920" height="1080"
+                            style="max-height: 90%; width: auto;">
+                        <div style="text-align: center;">
+                            <small><em>Hot for Teacher</em> by Van Halen. <br>Transcription and Performance: Mr.
+                                Tabs.</small>
+                        </div>
+                    </div>
+                </section>
+                <section data-background-image="media/Defence/vanHalenSnapshot.png">
+                </section>
+                <section>
+                    <h3 class="slide-title">Context</h3>
+                    <div data-auto-animate-id="maindiv"
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div>
+
+                            <img src="media/Defence/teaserFig.png" alt="TODO" data-auto-animate-id="teaser"
+                                style="max-width: 80vw; height: auto;">
+                        </div>
+                        <div>
+                            <b>ANR TABASCO Project</b> <br>
+                            <ul
+                                style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-items: center;">
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/louisb.jpg" alt="Louis Bigo"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Louis Bigo
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/baptiste.jpg" alt="Baptiste Bacot"
+                                        style="max-width: 150px; height: 200px; border-radius: 12px; display: block; margin: 0 auto; overflow: hidden;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Baptiste Bacot
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/louisc.jpeg" alt="Louis Couturier"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Louis Couturier
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/ken.png" alt="Ken Déguernel"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Ken Déguernel
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/leo.jpeg" alt="Léo Dupouey"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Léo Dupouey
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/mathieu.jpg" alt="Mathieu Giraud"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Mathieu Giraud
+                                    </div>
+                                </li>
+                                <li style="text-align: center; grid-column: span 2;">
+                                    <img src="media/Defence/tabascopics/benoit.jpeg" alt="Benoît Navarret"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Benoît Navarret
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="text-align: left;">
+                        <small>
+                            <a href="https://www.flaticon.com/free-icons/machine-learning"
+                                title="machine learning icons">ML icon by Eucalyp</a>
+                        </small>
+                    </div>
+                </section>
+            </section>
+            <section>
+                <div class="r-stack">
+                    <img src="media/Defence/mirVENN.png" alt="TODO"
+                        style="max-height: 100vh; max-width: 100vw; display: block; margin: auto;">
+                    <img src="media/Defence/guitarmirVENN.png" alt="TODO"
+                        style="max-height: 100vh; max-width: 100vw; display: block; margin: auto;" class="fragment">
+                </div>
+
+            </section>
+
+
+            <section class="slide">
+                <section class="slide" data-auto-animate>
+                    <h3 class="slide-title">Introduction</h3>
+                    <h4 style="font-weight: normal;" data-id="subtitle">“Assisting <b>Western Popular Music</b> Guitar
+                        Practice
+                        and Tablature Composition
+                        with
+                        Machine
+                        Learning”</h4>
+                    <div class="slide-body align-left fragment fade-in">
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-direction: row;">
+                            <div>
+                                <ul>
+                                    <li>20th Century and onwards;</li>
+                                    <li>Stems from early Blues and Jazz music;</li>
+                                    <li>Based on elements of Western music theory and tradition.</li>
+                                    <li>Examples: Rock, Pop, Metal, EDM, Hip-Hop, Funk.</li>
+                                </ul>
+                            </div>
+                            <div
+                                style="display: flex; align-items: center; flex-direction: column; width: 65vw; min-height: 35px;">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="slide" data-auto-animate>
+                    <h3 class="slide-title">Introduction</h3>
+                    <h4 style="font-weight: normal;" data-id="subtitle">“Assisting Western Popular Music <b>Guitar
+                            Practice
+                            and Tablature Composition</b>
+                        with
+                        Machine
+                        Learning”</h4>
+                    <div class="slide-body align-left">
+
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-direction: row;">
+                            <div>
+                                <ul>
+                                    <li>20th Century and onwards;</li>
+                                    <li>Stems from early Blues and Jazz music;</li>
+                                    <li>Based on elements of Western music theory and tradition.</li>
+                                    <li>Examples: Rock, Pop, Metal, EDM, Hip-Hop, Funk.</li>
+                                </ul>
+                            </div>
+                            <div style="display: flex; align-items: center; flex-direction: column;">
+                                <img src="media/Defence/guitar-cropped.png" style="width: auto; max-height: 40vh;">
+                                <br>
+                                <img src="media/Defence/e4Tab.png" alt="TODO" style="max-width: 25vw; height: auto;"
+                                    class="fragment fade-in">
+                            </div>
+                        </div>
+                        <br>
+                        <span><small>Guitar image by <a
+                                    href="https://pixabay.com/users/obbilder-3192627/?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1669233">obBilder</a>
+                                from <a
+                                    href="https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=image&utm_content=1669233">Pixabay</a></small></span>
+                    </div>
+                </section>
+            </section>
+            <section class="slide" id="tablature">
+                <h3 class="slide-title">Introduction</h3>
+                <h4 style="text-align: left;">Tablature Notation</h4>
+                <section>
+                    <div>
+                        <audio controls>
+                            <source src="media/Bordeaux2025/polyphia-goat-start.mp3" type="audio/mp3">
+                        </audio>
+                        <br>
+                        <small><em>G.O.A.T.</em>, Polyphia.</small>
+                    </div>
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; text-align: center; flex-direction: column;">
+                        <div class="r-stack">
+                            <img src="media/Bordeaux2025/goat0.png" alt="TODO" style="max-width: 90vw; height: auto;">
+                            <img src="media/Bordeaux2025/goat1.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                                class="fragment">
+                            <img src="media/Bordeaux2025/goat2.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                                class="fragment">
+                            <img src="media/Bordeaux2025/goat3.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                                class="fragment">
+                            <img src="media/Bordeaux2025/goat4.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                                class="fragment">
+                            <img src="media/Bordeaux2025/goat5.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                                class="fragment">
+                            <img src="media/Bordeaux2025/goat6.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                                class="fragment">
+                        </div>
+                        <br>
+                        <img src="media/Defence/asciiTab.png" alt="" class="fragment">
+                    </div>
+                </section>
+            </section>
+
+            <section data-background-image="media/Defence/interface_guitarPro.png" data-background-size="100%">
+            </section>
+
+            <section class="slide">
+                <h4 class="slide-title" id="datasets">Datasets</h4>
+                <div
+                    style="display: flex; text-align: center; justify-content: space-evenly; align-items: center; flex-direction: row; align-items: center; height: 100vh;">
+
+                    <div
+                        style="height: 100%; text-align: left; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
+                        <img src="media/Defence/mysongbook-logo.png" alt="TODO" style="max-width: 30vw; height: auto;">
+                        <ul>
+                            <span><a href="https://mysongbook.com" target="_blank">mysongbook.com</a></span>
+                            <li>Proprietary;</li>
+                            <li>Professional Transcriptions;</li>
+                            <li>2115 <code>.gp</code> files;</li>
+                            <li>308 different artists.</li>
+                        </ul>
+                        <img src="media/Defence/gpif.png" alt="" style="max-width: 50vw;">
+                    </div>
+                    <div
+                        style="height: 100%; text-align: left; display: flex; flex-direction: column; justify-content: space-evenly; align-items: center;">
+                        <img src="media/Defence/dadagp.png" alt="TODO"
+                            style="max-width: 30vw; height: auto; border: 3px solid #0005;">
+                        <ul>
+                            <li>Open for Research;</li>
+                            <li>Amateur Transcriptions;</li>
+                            <li>26 181 <code>.gp5</code> and tokenised files;</li>
+                            <li>882 different artists.</li>
+                        </ul>
+                        <img src="media/Defence/tokensDGP-1.png" alt="" style="max-width: 40vw; height: auto;">
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="r-stack">
+                    <img src="media/Defence/tabUsageContribs.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                        class="fragment fade-out" data-fragment-index="1">
+                    <img src="media/Defence/tabUsageOutline.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                        class="fragment fade-in-then-out" data-fragment-index="1">
+                    <img src="media/Defence/outlineRG.png" alt="TODO" style="max-width: 90vw; height: auto;"
+                        class="fragment fade-in" data-fragment-index="2">
+                </div>
+            </section>
+
+
+            <section class="slide" id="diagrams">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Guitar Chord Diagrams</h4>
+                <div
+                    style="display: flex; flex-direction: row; height: 100vh; width: 100vw; align-items: center; justify-content: space-evenly;">
+                    <div style="display: flex; flex-direction: column; width: 80%; height: 100vh; align-items: center;">
+                        <img src="media/Defence/diagram.png" alt="TODO" style="max-height: 30%;">
+                        <img src="media/Defence/teaserDiagrams-1.png" alt="" style="max-width: 40%;">
+                    </div>
+                    <div style="width: 30%;">
+
+                        <ul>
+                            <li>Diagrams allow to disambiguate between chord positions;</li>
+                            <li>Using the previous position as context allows to suggest diagrams with:
+                                <ul>
+                                    <li>More consistent texture;</li>
+                                    <li>More playable transitions.</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <br><br>
+                        <br><br>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="reference-container">
+                    <cite class="reference">D'Hooge et al. (2024), <em>Guitar Chord
+                            Diagram Suggestion for Western
+                            Popular Music</em>, SMC.</cite>
+                </div>
+            </section>
+
+            <section class="slide" id="rhythmguitar">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Rhythm Guitar Tablature Continuation Through Picking Pattern Generation
+                </h4>
+                <section>
+                    <div
+                        style="width: 100vw; display: flex; flex-direction: row; align-items: center; justify-content: space-around;">
+                        <img src="media/Defence/rhythmguitarTask.png" alt="TODO" style="max-width: 100%; height: auto;">
+                        <div style="width: 40%;">
+                            <ul>
+                                <li><b>Objective:</b> Suggest possible continuation given a tablature
+                                    prompt and a chord
+                                    progression;</li>
+                                <br>
+                                <li>If any chord position is missing, it can be
+                                    suggested automatically
+                                    (D'Hooge et al. 2024).</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </section>
+                <section data-auto-animate>
+                    <div>
+                        <div data-id="animals">
+                            <img src="media/Defence/risingSunSnapshot.png" alt="TODO"
+                                data-preview-video="media/Defence/risingSunCut128.mp4"
+                                style="width: 70vw; height: auto;">
+                            <br>
+                            <span><small><em>House of the Rising Sun</em>, The Animals.</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div style="display: flex; flex-direction: row;">
+                        <div data-id="animals" data-auto-animate-easing="step-start">
+                            <img src="media/Defence/risingSunSnapshot.png" alt="TODO"
+                                data-preview-video="media/Defence/risingSunCut.mp4" style="width: 70vw; height: auto;">
+                            <br>
+                            <br>
+                            <span><small><em>House of the Rising Sun</em>, The Animals.</small></span>
+                        </div>
+                        <div style="width: 30vw;">
+                            <ul>
+                                <li>
+                                    Accompaniment parts in WPM are often repetitive;
+                                </li>
+                                <li>Composers/Transcribers rely heavily on
+                                    copy-pasting;</li>
+                                <li>Suggesting continuations can ease the
+                                    writing process and
+                                    propose variations;</li>
+                                <li>Previous work lack chord progression
+                                    controls (except McVicar et
+                                    al. 2014).</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="reference-container">
+                        <cite class="reference">Bacot et al. (2024), <em>Enjeux du
+                                logiciel de
+                                tablatures dans l'acte de création en musiques actuelles : méthode d'entretien et
+                                analyse
+                                d'une pratique</em>, JIM.</cite>
+                        <cite class="reference">McVicar et al. (2014),
+                            <em>AutoRhythmGuitar:
+                                Computer-aided composition
+                                for Rhythm Guitar in the Tab Space</em>, ICMC. </cite>
+                        <cite class="reference">Chen et al. (2020), <em>Automatic
+                                Composition of
+                                Guitar Tabs by
+                                Transformers and Groove Modeling</em>, ISMIR.</cite>
+                        <cite class="reference">Loth et al. (2023), <em>ProgGP: From
+                                GuitarPro
+                                Tablature Neural
+                                Generation To Progressive Metal Production</em>, CMMR.</cite>
+                        <cite class="reference">Sarmento et al. (2023), <em>GTR-CTRL:
+                                Instrument
+                                and Genre
+                                Conditioning
+                                for Guitar-Focused Music Generation with Transformers</em>, EvoMUSART.</cite>
+                    </div>
+                </section>
+                <section style="display: flex; align-items: center; text-align: center;">
+                    <br>
+                    <br>
+                    <br>
+                    <div style="height: 100%; width: 100%;">
+
+                        <img src="media/Defence/pickingPattern.png" alt="TODO" style="width: 100%; height: auto;">
+                    </div>
+                </section>
+            </section>
+
+            <section class="slide">
+                <h3 class="slide-title">Assist Composition</h3>
+                <section>
+                    <div style="display: flex; flex-direction: row; width: 100vw; justify-content: space-between;">
+
+                        <div style="text-align: left; max-width: 35%;">
+                            <h5 style="text-align: left;">Data Preparation of DadaGP</h5>
+                            <ol>
+                                <li>Identify rhythm guitar tracks (Régnier et al., 2021);</li>
+                                <li>Extract 4-bar sequences with less than 75% rest time;</li>
+                                <li>Convert to tokens.</li>
+                            </ol>
+                        </div>
+                        <img src="media/Defence/tokensRhythmGuitar-1.png" alt="" style="max-width: 55%;">
+                    </div>
+                </section>
+                <section>
+                    <br>
+                    <br>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-evenly;">
+
+                        <div style="height: 100vh;">
+
+                            <span>Rule-Based Model</span>
+                            <div class="r-stack" style="width: 50vw; max-height: 95%;">
+                                <img src="media/Defence/ruleBased0.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                                <img src="media/Defence/ruleBased1.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                                <img src="media/Defence/ruleBased2.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                                <img src="media/Defence/ruleBased3.png" alt="TODO"
+                                    style="max-width: 100%; height: auto;" class="fragment">
+                            </div>
+                        </div>
+                        <div style="height: 100vh;">
+                            <span class="fragment">Transformer Model</span>
+                            <div class="r-stack" style="width: 50vw; max-height: 95%;">
+                                <img src="media/Defence/gptModel0.png" alt="TODO" style="max-width: 95%; height: auto;"
+                                    class="fragment">
+                                <img src="media/Defence/gptModel1.png" alt="TODO" style="max-width: 95%; height: auto;"
+                                    class="fragment">
+                            </div>
+                        </div>
+                    </div>
+                    <!--Fader icon <a href="https://www.flaticon.com/free-icons/agency" title="agency icons">Agency icons created by Ralf Schmitzer - Flaticon</a>-->
+                    <!--Transformer icon by https://www.iconfinder.com/pocike-->
+                </section>
+                <section data-auto-animate>
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: center; align-items: center; width: 100vw; height: 100vh;">
+                        <img src="media/Defence/quantitativeMetrics-1.png" alt=""
+                            style="max-width: 100vw; max-height: 85%;" data-id="quantMet">
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <img src="media/Bordeaux2025/quantitativeMetrics-1.png" alt="" style="max-width: 60vw;"
+                            data-id="quantMet">
+                        <div style="max-width: 55vw;">
+                            <h5>Quantitative Evaluation</h5>
+                            <ul>
+                                <li><b>Edit Distance</b>: Transformer outperforms rule-based model
+                                    significantly;</li>
+                                <li><b>Texture Manhattan Distance</b> the controls effectively drive the
+                                    transformer model to
+                                    change texture;</li>
+                                <li><b>Out-of-Diagram notes</b>:
+                                    <ul>
+                                        <li>
+                                            Impossible for the rule-based model by design;
+                                        </li>
+                                        <li>
+                                            4% OoD notes ratio observed in the dataset;
+                                        </li>
+                                        <li>
+                                            At least 8% of OoD notes in what the transformer generates, even with a
+                                            dedicated loss function.
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <h5 style="text-align: left;">Online Survey for Subjective Evaluation</h5>
+                    <div style="text-align: left;">
+                        54 participants: 41 M, 3 F, 10 na; 46±16 years old. </div>
+                    <br>
+                    <div class="slide-body" style="display: flex; justify-content: space-between; align-items: center;">
+                        <ul>
+                            <li>Rate 5 prompts' continuations from:
+                                <ul>
+                                    <li>Reference</li>
+                                    <li>Rule-based</li>
+                                    <li>Transformer</li>
+                                </ul>
+                            </li>
+                            <li>7-point Likert scales on:
+                                <ul>
+                                    <li>Playability</li>
+                                    <li>Consistency</li>
+                                    <li>Interest</li>
+                                    <li>Usability</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <img src="media/Defence/rhythmGuitarSnapshot.png" alt="TODO"
+                            data-preview-video="media/Defence/test.mp4" width="1200">
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: row; width: 100vw; height: 95vh; align-items: center; justify-content: space-between;">
+
+                        <img src="media/Defence/rhythmguitarUserStudy.png" alt="TODO" style="width: 85vw;">
+                        <ul style="max-width: 30vw;">
+                            <li>All continuations rated rather positively, with the reference preferred over both
+                                models;</li>
+                            <li>Preference for the rule-based model over the transformer despite
+                                being
+                                less controllable;
+                            </li>
+                            <li>Prolonged use of the transformer model might be more appropriate
+                                for
+                                its evaluation.</li>
+                        </ul>
+
+                    </div>
+                </section>
+            </section>
+            <section class="slide">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Bass Tablature Accompaniment Generation</h4>
+                <div
+                    style="position: fixed; right: 0; top: 0; display: flex; flex-direction: row; justify-content: space-between; width: 25vw;">
+                    <div>
+                        <img src="media/Defence/qr_code_demoBass.svg" alt=""
+                            style="max-width: 200px; height: auto; display: block; margin: 0 auto;">
+                        <span style="font-size: 18pt; display: block; text-align: center;">Generated samples</span>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: center;">
+
+                        <img src="media/Defence/olivier.jpeg" alt="Olivier Anoufa"
+                            style="max-width: 200px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+                        <span style="font-size: 18pt; text-align: center; display: block;">&nbsp &nbsp Olivier
+                            Anoufa</span>
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; flex-direction: column; align-items: start;">
+
+                        <div>
+
+                            <img src="media/Defence/bassGen.png" alt="" style="height: 40vh;">
+                        </div>
+
+                        <img src="media/Defence/modelBass-1.png" alt="" style="height: 32vh;">
+                    </div>
+                    <ul style="width: 40vw; font-size: 22pt;">
+                        <li>Generate a bass guitar tablature conditioned on a rhythm guitar tablature.</li>
+                        <li>A thematic analysis of the results suggest that:
+                            <ul>
+                                <li>The transformer model generates consistent musical content;</li>
+                                <li>The bass lines feature idiomatic playing techniques;</li>
+                                <li>The bass can sometimes be late/early when following the harmony.</li>
+                            </ul>
+                        </li>
+                        <li>The model is large and needs a few seconds to generate a bass track on GPU.</li>
+                    </ul>
+                </div>
+
+                <div class="reference-container" style="position: fixed; bottom: -1rem;">
+                    <cite class="reference">Anoufa et al. (2025), <em>Conditional Generation of Bass Guitar Tablature
+                            for
+                            Guitar Accompaniment in Western Popular Music</em>, AIMC.</cite>
+                    <cite class="reference">Makris et al. (2022), <em>Conditional Drums Generation Using Compound Word
+                            Representations</em>, EvoMUSART.</cite>
+
+                </div>
+            </section>
+            <section>
+                <div>
+                    <img src="media/Defence/outlineBends.png" alt="" style="max-height: 100vh; max-width: 100vw;">
+                </div>
+            </section>
+
+            <section class="slide" id="bends">
+                <h3 class="slide-title">Assist Composition</h3>
+                <h4 class="slide-subtitle">Suggest Bends and Playing Techniques to Lead Guitarists</h4>
+                <section data-auto-animate>
+                    <div>
+                        <img src="media/Defence/guitarBend.webp" alt="">
+                    </div>
+                    <div style="text-align: left; position: fixed; bottom: 0;" data-id="bendsource">
+                        <span><small>Bend photo from <a
+                                    href="https://www.musicradar.com/tuition/guitars/guitar-basics-string-bending-166345">musicradar.com</a>.</small></span>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div>
+
+                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                            <img src="media/Defence/guitarBend.webp" alt="" style="max-width: 30vw;">
+                            <img src="media/Defence/bendSymbols3.png" alt="" style="max-width: 70vw;">
+                        </div>
+                        <br>
+                        <div style="text-align: left; position: fixed; bottom: 0;" data-id="bendsource">
+                            <span><small>Bend photo from <a
+                                        href="https://www.musicradar.com/tuition/guitars/guitar-basics-string-bending-166345">musicradar.com</a>.</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section data-auto-animate>
+                    <div>
+
+                        <div style="display: flex; flex-direction: row; justify-content: space-between;">
+                            <img src="media/Defence/guitarBend.webp" alt="" style="max-width: 30vw;">
+                            <img src="media/Defence/bendSymbols4.png" alt="" style="max-width: 70vw;">
+                        </div>
+                        <br>
+                        <div style="text-align: left; position: fixed; bottom: 0;" data-id="bendsource">
+                            <span><small>Bend photo from <a
+                                        href="https://www.musicradar.com/tuition/guitars/guitar-basics-string-bending-166345">musicradar.com</a>.</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: column; justify-content: space-evenly; align-items: center; height: 50vh;">
+                        <div style="text-align: left; width: 100vw;">
+
+                            <span>Suggest bends to add expressiveness and increase idiomaticity.</span>
+                        </div>
+                        <div>
+                            <video width="" height="" controls>
+                                <source src="media/Defence/chopinClassicalCLEAN.mp4" type="">
+                            </video>
+                            <br>
+                            <span><small><em>Nocturne Op.9 No.2</em>, Frédéric Chopin (transposed to E
+                                    Major).</small></span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div>
+                            <ul>
+                                <li>Feature-based Approach
+                                    <ul>
+                                        <li>Rhythm</li>
+                                        <li>Pitch</li>
+                                        <li>Gesture</li>
+                                    </ul>
+                                </li>
+                                <li>Evaluate a note based on its neighbourhood</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <img src="media/Defence/featurefigBends.png" alt="" style="max-width: 50vw;">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; justify-content: space-between; flex-direction: row; align-items: center;">
+                        <div>
+
+                            <img src="media/Defence/bendsCMatrix.png" alt="TODO" style="max-width: 50vw;">
+                        </div>
+                        <div class="fragment">
+
+                            <span>
+
+                                Four most important features:
+                            </span>
+                            <br>
+                            <ul>
+                                <li>Pitch of current note;</li>
+                                <li>Pitch distance to next note;</li>
+                                <li>Pitch distance to previous note;</li>
+                                <li>Current note's duration.</li>
+                            </ul>
+                            <img src="media/Defence/mostImportantFeaturesBend.png" alt=""
+                                style="max-width: 50vw; max-height: 40vh;">
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        <video width="80%" height="auto" controls>
+                            <source src="media/Defence/chopinMetalKILLJESTER.mp4" type="video/mp4">
+                        </video>
+                        <br>
+                        <small><em>Nocturne Op.9 No.2</em>, Frédéric Chopin (transposed to E Major), arranged by K I L L
+                            J E S T E R </small>
+                    </div>
+                </section>
+                <section>
+                    <div>
+                        Possible to extend to other techniques. Statistics used by Bontempi et al. (2024) to add
+                        expressiveness to melodies.
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div>
+
+                            <img src="media/Defence/playingTechniques.png" alt="TODO">
+                        </div>
+                        <div>
+                            <img src="media/Defence/bontempiPaper.png" alt=""
+                                style="max-width: 50vw; border: 5px solid #000A">
+                        </div>
+                    </div>
+                    <div class="reference-container">
+                        <cite class="reference">Bontempi et al. (2024), <em>From MIDI to Rich Tablatures: an Automatic
+                                Generative System incorporating Lead Guitarists' Fingering and Stylistic choices</em>,
+                            SMC.</cite>
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <div>
+                    <img src="media/Defence/outlineLearnin.png" alt="" style="max-height: 100vh; max-width: 100vw;">
+                </div>
+            </section>
+
+
+            <section class="slide" id="gsc" data-auto-animate>
+                <h3 class="slide-title">Assist Learning and Practice</h3>
+                <section data-auto-animate>
+                    <div>
+                        <span data-id="gscspan">
+                            There are <b>a lot</b> of online resources available to guitarists.
+                        </span>
+                        <br>
+                        <ul>
+                        </ul>
+                    </div>
+
+                </section>
+            </section>
+            <section data-auto-animate data-background-image="media/Defence/ultimateGuitar.png">
+                <div style="color: #fff; background-color: rgba(0, 0, 0, 0.9); width: 40vw; text-align: left;">
+                    <span data-id="gscspan">
+                        There are <b>a lot</b> of online resources available to guitarists:
+                    </span>
+                    <br>
+                    <ul>
+                        <li data-id="tabwww">Tab Websites
+                            <ul>
+                                <li>UltimateGuitar;</li>
+                                <li>Songsterr;</li>
+                                <li>911tabs...</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <section data-auto-animate data-background-image="media/Defence/fenderPlay.png">
+                <div style="color: #fff; background-color: rgba(0, 0, 0, 0.9); width: 40vw; text-align: left;">
+                    <span data-id="gscspan">
+                        There are <b>a lot</b> of online resources available to guitarists:
+                    </span>
+                    <br>
+                    <ul>
+                        <li data-id="tabwww">Tab Websites
+                            <ul>
+                                <li>UltimateGuitar;</li>
+                                <li>Songsterr;</li>
+                                <li>911tabs...</li>
+                            </ul>
+                        </li>
+                        <li>Online Courses
+                            <ul>
+                                <li>YouTube channels</li>
+                                <li>justinGuitar</li>
+                                <li>Synner</li>
+                                <li>Fender Play...</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <section data-auto-animate data-background-image="media/Defence/RocksmithPlus.png">
+                <div style="color: #fff; background-color: rgba(0, 0, 0, 0.9); width: 40vw; text-align: left;">
+                    <span data-id="gscspan">
+                        There are <b>a lot</b> of online resources available to guitarists:
+                    </span>
+                    <br>
+                    <ul>
+                        <li data-id="tabwww">Tab Websites
+                            <ul>
+                                <li>UltimateGuitar;</li>
+                                <li>Songsterr;</li>
+                                <li>911tabs...</li>
+                            </ul>
+                        </li>
+                        <li>Online Courses
+                            <ul>
+                                <li>YouTube channels</li>
+                                <li>justinGuitar</li>
+                                <li>Synner</li>
+                                <li>Fender Play...</li>
+                            </ul>
+                        </li>
+                        <li>Apps
+                            <ul>
+                                <li>Yousician</li>
+                                <li>Simply Guitar</li>
+                                <li>Rocksmith+</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+
+            </section>
+            <section class="slide">
+                <div style="display: flex; flex-direction: column; justify-content: space-evenly; min-height: 80vh;">
+
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; width: 100vw; align-items: center;">
+
+                        <div style="width:40vw; text-align: left;">
+                            <span data-id="gscspan">
+                                There are <b>a lot</b> of online resources available to guitarists:
+                            </span>
+                            <br>
+                            <ul>
+                                <li data-id="tabwww">Tab Websites
+                                </li>
+                                <li>Online Courses
+                                </li>
+                                <li>Apps
+                                </li>
+                            </ul>
+                        </div>
+                        <div style="text-align: left; width: 50vw;">
+                            Existing research focused on:
+                            <ul>
+                                <li>Gathering resources for learning a song or
+                                    chords;</li>
+                                <li>Assist beginners in learning new songs;
+                                </li>
+                                <li>Analyse the difficulty of songs based on
+                                    their
+                                    chords.</li>
+                            </ul>
+
+                        </div>
+                    </div>
+                    <div>
+                        <span>The learner's level is rarely modelled, except in Müllerschön et al. (2025).</span>
+                    </div>
+
+                </div>
+                <div class="reference-container">
+                    <cite class="reference">Barthet et al. (2011), <em>Music
+                            Recommendation for
+                            Music Learning: Hottabs, a Multimedia Guitar Tutor</em>, WOMRAD.</cite>
+                    <cite class="reference">Xambó et al. (2018), <em>Jam with
+                            Jamendo:
+                            Querying
+                            a Large Music Collection by Chords from a Learner's Perspective</em>, Audio
+                        Mostly.</cite>
+                    <cite class="reference">Ariga et al. (2017), <em>Strummer: An
+                            Interactive Guitar Chord Practice System</em>, ICME.</cite>
+                    <cite class="reference">Vélez Vasquéz et al. (2023),
+                        <em>Quantifying the Ease of Playing Song Chords on the Guitar</em>, ISMIR.</cite>
+                    <cite class="reference">Müllerschön et al. (2025), <em>Playability
+                            Prediction in Digital
+                            Guitar Learning using Interpretable Student and Song Representations</em>, ISMIR.</cite>
+                </div>
+            </section>
+            <section class="slide">
+                <h3 class="slide-title">Assist Learning and Practice</h3>
+                <h4 class="slide-subtitle">Difficulty-informed Song Recommendations</h4>
+                <section>
+
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center;">
+                        <div style="width: 30vw; text-align: left;">
+                            <img src="media/Defence/gscStyles-1.png" alt="" style="max-height: 45vh;">
+                            <br>
+                            <span style="font-size: 18pt;">New dataset of over 200 difficulty-rated WPM rhythm guitar
+                                songs.</span>
+                        </div>
+                        <div>
+                            <img src="media/Defence/gscTracyChapman.png" alt="" style="max-width: 50vw;">
+                        </div>
+                        <div>
+                            <img src="media/Defence/gscLogo.jpg" alt="TODO" style="max-width: 40vw; max-height: 25vh;">
+                            <ul
+                                style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-items: center;">
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/yohann.jpeg" alt="Yohann Abbou"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Yohann Abbou
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/tabascopics/mathieu.jpg" alt="Mathieu Giraud"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Mathieu Giraud
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/gilles.jpeg" alt="Gilles Guillemain"
+                                        style="max-width: 150px; height: 150px; border-radius: 12px; display: block; margin: 0 auto; overflow: hidden;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Gilles Guillemain
+                                    </div>
+                                </li>
+                                <li style="text-align: center;">
+                                    <img src="media/Defence/aurelien.jpeg" alt="Aurélien Jeanneau"
+                                        style="max-width: 150px; height: auto; border-radius: 12px; display: block; margin: 0 auto;">
+
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Aurélien Jeanneau
+                                    </div>
+                                </li>
+                                <li style="text-align: center; grid-column: span 2;">
+                                    <div style="font-size: 20px; margin-top: 6px;">
+                                        Zakaria Hassein-Bey
+                                    </div>
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: column; align-items: start; justify-content: end; height: 90vh;">
+
+                        <div
+                            style="display: flex; flex-direction: row; justify-content: space-evenly; width: 100vw; height: 50vh;">
+                            <div>
+
+                                <img src="media/Defence/gscAccord-1.png" alt="" style="max-width: 30vw;">
+                            </div>
+                            <div>
+
+                                <img src="media/Defence/userLevelGSC.png" alt="" style="max-width: 50vw;">
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: row; justify-content: space-evenly; width: 100vw;">
+                            <div>
+
+                                <img src="media/Defence/gscFormula1.png" alt="TODO" style="width: 60vw;">
+                            </div>
+                            <div>
+                                <img src="media/Defence/gscPath.png" alt="" style="max-width: 50vw; max-height: 30vh;">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+            <section class="slide" id="mtg">
+                <h3 class="slide-title">Assist Learning and Practice</h3>
+                <h4 class="slide-subtitle">Interpretable Tablature Difficulty Analysis</h4>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; height: 90vh; font-size: 28px;">
+                        <div
+                            style="width: 45vw; text-align: left; height: 50%; display: flex; flex-direction: column; justify-content: space-evenly;">
+                            <b>New dataset of approx. 1000 difficulty-rated tablatures.</b>
+                            <br>
+                            <span>
+                                Songs to practice weekly for rhythm, lead or bass guitar. Difficulty ratings are
+                                numerical and categorical:
+                            </span>
+                            <ul style="width: 100%;">
+                                <li>1-3: Beginner;</li>
+                                <li>4-5: Intermediate;</li>
+                                <li>6-7: Advanced;</li>
+                                <li>8-9: Master;</li>
+                                <li>10: Expert.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div style="position: fixed; bottom: 0; left: 0;">
+                        <img src="media/Defence/logoMTG.png" alt="TODO" style="max-width: 25vw; max-height: 30vh;">
+                        <ul
+                            style="list-style-type: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; justify-items: center;">
+                            <li style="text-align: center;">
+                                <img src="media/Defence/seva.jpeg" alt="Vsevolod Eremenko"
+                                    style="width: 150px; height: 150px; border-radius: 12px; display: block; margin: 0 auto; overflow: hidden;">
+
+                                <div style="font-size: 26px; margin-top: 6px;">
+                                    Vsevolod Eremenko
+                                </div>
+                            </li>
+                            <li style="text-align: center;">
+                                <img src="media/Defence/pedro.jpeg" alt="Pedro Ramoneda"
+                                    style="width: 150px; height: 150px; border-radius: 12px; display: block; margin: 0 auto; overflow: hidden;">
+
+                                <div style="font-size: 26px; margin-top: 6px;">
+                                    Pedro Ramoneda
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div style="position: fixed; bottom: 0; right: 0;">
+                        <div>
+
+                            <img src="media/Defence/superbus.png" alt="" style="max-width: 50vw;">
+                            <br>
+                            <span style="font-size: 24px;"><em>Radio Song</em>, Superbus. Rhythm Guitar - B</span>
+                        </div>
+                        <br>
+                        <div>
+
+                            <img src="media/Defence/maneskinBass.png" alt=""
+                                style="max-width: 50vw; background-color: rgb(F, F, F);">
+                            <br>
+                            <span style="font-size: 24px;"><em>Beggin'</em>, Måneskin. Bass Guitar - I</span>
+                        </div>
+                        <div>
+
+                            <img src="media/Defence/babymetal.png" alt=""
+                                style="max-width: 50vw; background-color: rgb(F, F, F);">
+                            <br>
+                            <span style="font-size: 24px;"><em>Ijime, Dame, Zettai</em>, BABYMETAL. Lead Guitar -
+                                M</span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="position: fixed; top: 0; right: 0; display: flex; flex-direction: row; align-items: center;">
+                        <img src="media/Defence/ABRSM_logo.svg" alt="" style="width: 150px;">
+                        <img src="media/Defence/RSL-Logo.png" alt="" style="width: 200px;">
+                        <img src="media/Defence/trinity_college_london_logo.png" alt="" style="width: 300px;">
+                    </div>
+                    <div
+                        style="display: flex; flex-direction: row; align-items: center; justify-content: space-between;">
+
+                        <div
+                            style="display: flex; flex-direction: column; justify-content: space-evenly; height: 90vh;">
+                            <p style="text-align: left; width: 40vw;">Feature Engineering approach, based on the
+                                curricula
+                                of music
+                                diplomas and past research on
+                                piano and guitar difficulty.</p>
+                            <div style="width: 50vw;">
+                                <ul>
+                                    Feature Groups:
+                                    <li>Speed;</li>
+                                    <li>Stamina;</li>
+                                    <li>Structure/Repetition;</li>
+                                    <li>Technique;</li>
+                                    <li>Rhythm;</li>
+                                    <li>Pitch/Fretboard Position.</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div
+                            style="display: flex; flex-direction: column; height: 80vh; justify-content: end; align-items: center;">
+
+                            <div>
+                                <img src="media/Defence/leadFeatsAcc-1.png" alt="TODO"
+                                    style="max-height: 30vh; margin: 0 auto; display: block; margin: 0 auto;"
+                                    data-preview-image>
+                                <p style="font-size: 22px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Lead Guitar</p>
+                            </div>
+                            <div>
+                                <img src="media/Defence/bassFeatsAcc-1.png" alt="TODO"
+                                    style="max-height: 30vh; display: block; margin: 0 auto;">
+                                <p style="font-size: 22px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Bass Guitar</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="reference-container">
+                        <cite class="reference">Chiu et al. (2012), <em>A Study on Difficulty Level Recognition of Piano
+                                Sheet Music</em>, Int. Symposium on Multimedia.</cite>
+                        <cite class="reference">Vélez Vásquez et al. (2023), <em>Quantifying the Ease of Playing Song
+                                Chords on the Guitar</em>, ISMIR.</cite>
+                    </div>
+                </section>
+            </section>
+
+            <section data-background-image="media/Defence/contributions.png" data-background-size="contain">
+
+            </section>
+
+            <section>
+                <h3>Perspectives</h3>
+                <section>
+                    <div style="display: flex; flex-direction: column; text-align: center; align-items: center;">
+
+                        <div>
+                            <span>Deploy and improve performance of the models. </span>
+                        </div>
+                        <div style="width: 75vw;">
+                            <video width="100%" height="auto" controls>
+                                <source src="media/Defence/bend_prediction_demo.mp4" type="video/mp4">
+                            </video>
+                            <br>
+                            <span>Demonstration interface made by Léo Dupouey.</span>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="display: flex; flex-direction: column; align-items: center; justify-content: space-evenly;">
+
+                        <div style="display: block; margin: 0; padding: 0;">
+                            <span style="display: block; margin: 0; padding: 0;">Focus on human-centered
+                                approaches</span>
+                        </div>
+                        <div
+                            style="width: 100vw; display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                            <div>
+
+                                <img src="media/Defence/panzerballett_Xmas_Hamburg_2017.jpg" alt=""
+                                    style="max-width: 40vw; display: block; margin: 0 auto;">
+                                <span style="font-size: 22px; text-align: left;">Jan Zehrfeld, Panzerballett.</span>
+                            </div>
+                            <div style="display: flex; flex-direction: column;">
+                                <div>
+                                    <img src="media/Defence/radarplotMTG-1.png" alt="" style="max-height: 45vh;">
+                                </div>
+                                <div>
+                                    <img src="media/Defence/shapMTG-1.png" alt="" style="max-height: 30vh;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div
+                        style="width: 100vw; display: flex; flex-direction: row; align-items: start; justify-content: space-between; height: 80vh;">
+                        <div>
+
+                            <span><b>Use tablatures in more research tasks.<br></b></span>
+                            <ul style="width: 30vw; font-size: 34px;">
+                                <li>Overpainting;</li>
+                                <li>Exercises Generation;</li>
+                                <li>Automatic Difficulty-Controlled Arrangements;</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <span><b>Towards multimodality</b></span>
+                            <p>&nbsp;</p>
+                            <img src="media/Defence/goatPaper.png" alt="" style="max-width: 40vw;">
+                        </div>
+                        <div style="display: flex; flex-direction: column;">
+                            <span><b>Support Computational Musicology Research</b></span>
+
+                            <img src="media/Defence/brutalDeath.png" alt="" style="max-width: 30vw;">
+                            <div style="display: flex; flex-direction: row;">
+                                <div style="display: flex; flex-direction: column;">
+
+                                    <img src="media/Defence/quentin.png" alt="" style="max-width: 10vw;">
+                                    <small>Quentin Guilluy <br>📷&nbsp;metalbreeding</small>
+                                </div>
+                                <div style="text-align: right; font-size: 32px;">
+                                    Analysis of gesture in Brutal Death Metal
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+            <section data-background-image="media/Defence/contributions.png" data-background-size="contain">
+
+            </section>
+            <section id="all-references" data-visibility="uncounted">
+                <h3>References</h3>
+                <ul id="reference-list">
+
+                </ul>
+            </section>
+            <section data-visibility="uncounted">
+                PDF Manuscrit embeddé pour le style
+            </section>
+
+            <section data-visibility="uncounted">
+                <div style="align-items: center; height: 100vh; display: flex; flex-direction: row;">
+                    <img src="media/Defence/Bendsduration_clean.png" alt="" style="max-width: 50vw; max-height: 100vh;"
+                        data-preview-image>
+                    <img src="media/Defence/bendPitchFig-1.png" alt="" style="max-width: 50vw; max-height: 100vh;"
+                        data-preview-image>
+                </div>
+            </section>
+        </div>
+
+    </div>
+
+    <script src="dist/reveal.js"></script>
+    <script src="plugin/zoom/zoom.js"></script>
+    <script src="plugin/notes/notes.js"></script>
+    <script src="plugin/search/search.js"></script>
+    <script src="plugin/markdown/markdown.js"></script>
+    <script src="plugin/highlight/highlight.js"></script>
+    <script>
+        // Also available as an ES module, see:
+        // https://revealjs.com/initialization/
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            center: true,
+            hash: true,
+
+            slideNumber: 'c/t',
+            width: 1920,
+            height: 1080,
+
+            margin: 0.1,
+
+            // Learn about plugins: https://revealjs.com/plugins/
+            plugins: [RevealZoom, RevealNotes, RevealSearch, RevealMarkdown, RevealHighlight]
+        });
+
+    </script>
+    <script>
+        // Collect all references
+        const refs = [];
+        document.querySelectorAll('.reference').forEach(ref => {
+            refs.push(ref.innerHTML.trim());
+        });
+
+        // Populate the final slide
+        const refList = document.getElementById('reference-list');
+        refs.forEach(r => {
+            const li = document.createElement('li');
+            li.innerHTML = r;
+            refList.appendChild(li);
+        });
+    </script>
+
+</body>
+
+</html>
