@@ -41,6 +41,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/teaching/";
           },
+        },{id: "nav-phd-thesis",
+          title: "PhD thesis",
+          description: "Details about my PhD thesis, and the thesis itself.",
+          section: "Navigation menu",
+          handler: () => {
+            window.location.href = "/phdthesis/";
+          },
         },{id: "nav-research",
           title: "research",
           description: "Other info on my research. You&#39;ll find my publications on the corresponding tab.",

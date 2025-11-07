@@ -41,6 +41,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/fr/teaching/";
           },
+        },{id: "nav-thèse-de-doctorat",
+          title: "Thèse de doctorat",
+          description: "Informations sur ma thèse, ainsi que le manuscrit.",
+          section: "menu de navigation",
+          handler: () => {
+            window.location.href = "/fr/phdthesis/";
+          },
         },{id: "nav-recherche",
           title: "recherche",
           description: "Autres informations sur ma recherche. Vous trouverez mes publications à l&#39;onglet correspondant.",
