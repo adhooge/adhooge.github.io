@@ -19,11 +19,12 @@ nav_order: 7
 - 7th March 2024 : One-day forum with PhD students of the AIM programme from [C4DM](https://www.c4dm.eecs.qmul.ac.uk/) during their visit of the MTG.
 - From February to May 2024: Research visit at the [MTG](https://www.upf.edu/web/mtg) in Barcelona, Spain.
 
-### Paper Reviews
-
-In 2024, I've reviewed papers for [LAMIR 2024](https://lamir-workshop.github.io/), [ISMIR 2024](https://ismir2024program.ismir.net/index.html) and [ICASSP 2025](https://2025.ieeeicassp.org/).
-
 ## 2023
 
 - 19th Dec.  2023: Poster Presentation on _Rhythm Guitar Continuation_ at [DMRN+18](https://www.qmul.ac.uk/dmrn/dmrn18/).
 - 14th Sept. 2023: Talk on guitar tablatures for the [__MaDICS' Musiscale__](https://www.madics.fr/ateliers/musiscale/) group.
+
+### Paper Reviews
+
+Since 2024, I have been a reviewer for the [ISMIR](https://ismir.net/conferences/) conference, the [ICASSP](https://ieeeicassp.org/) conference, and the [LAMIR](https://lamir-workshop.github.io/) and
+[HCMIR](https://sites.google.com/view/hcmir25/home) Workshops. Since 2025, I am also a reviewer for the [EAIM](https://amaai-lab.github.io/EAIM2026/) workshop at AAAI.
