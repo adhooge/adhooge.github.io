@@ -20,10 +20,10 @@ announcements:
   limit: 5 # leave blank to include all the news in the `_news` folder
 ---
 
-Je recherche actuellement un **post-doc en Informatique musicale**. Bien que mes domaines d'expertise principaux soient le traitement de la musique symbolique et la recherche touchant à la guitare, je suis prêt à travailler sur de nouveaux sujets. 
+Je travaille en tant que post-doc avec [Dr. Yaolong Ju](https://juyaolongpaul.github.io/) @ Great Bay University
 
 ***
-Je soutiendrai ma thèse de doctorat le 9 octobre 2025, dont le sujet est : _Assisting Western Popular Music Guitar Practice and Tablature Composition with Machine Learning_ (Assister la pratique de la guitare et la composition de tablatures en Musiques Actuelles Occidentales par l'apprentissage automatique).
+J'ai soutenu ma thèse de doctorat le 9 octobre 2025, dont le sujet était : _Assisting Western Popular Music Guitar Practice and Tablature Composition with Machine Learning_ (Assister la pratique de la guitare et la composition de tablatures en Musiques Actuelles Occidentales par l'apprentissage automatique). Elle est disponible publiquement sur [HAL](https://theses.hal.science/tel-05466245v1).
 
 Cette thèse a été supervisée par [Louis Bigo](http://louisbigo.com), <a href='http://deguernel.discordia.fr'>Ken Déguernel</a> et <a href='http://cnrs.magiraud.org'>Mathieu Giraud</a>.
 
@@ -32,4 +32,3 @@ Mon travail a notamment été permis par le soutien de l'Agence Nationale de la 
 En plus de mes activités de recherche, j'ai enseigné l'informatique à l'_Université de Lille_.
 
 Sur mon temps libre, je joue de la guitare, du soubassophone, fais du JDR sur table, et lis quand j'en trouve le temps.
-
