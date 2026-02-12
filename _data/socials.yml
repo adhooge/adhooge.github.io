@@ -9,10 +9,10 @@
 # arxiv_id: # your arXiv author ID
 # blogger_url: # your blogger URL
 # bluesky_url: # your bluesky URL
-cv_pdf: /assets/pdf/[LANG]/example_pdf.pdf # path to your CV PDF file
+# cv_pdf: /assets/pdf/[LANG]/example_pdf.pdf # path to your CV PDF file
 # dblp_url: # your DBLP profile url
 # discord_id: # your discord id (18-digit unique numerical identifier)
-email: alexandre.dhooge@univ-lille.fr # your email address
+email: alexandre.dhooge@algomus.fr # your email address
 # facebook_id: # your facebook id
 # flickr_id: # your flickr id
 github_username: adhooge # your GitHub user name
@@ -26,7 +26,7 @@ gitlab_username: adhooge1 # your GitLab user name
 # lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 # leetcode_id: # your LeetCode id
 linkedin_username: alexandre-d-hooge-a5117a156 # your LinkedIn user name
-mastodon_username: mastodon.zaclys.com/@soubaboy # your mastodon instance+username in the format instance.tld/@username
+# mastodon_username: mastodon.zaclys.com/@soubaboy # your mastodon instance+username in the format instance.tld/@username
 # medium_username: # your Medium username
 orcid_id: 0000-0003-1634-3406 # your ORCID ID
 # osf_id: # your OSF ID
