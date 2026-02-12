@@ -22,6 +22,9 @@
 [![Estrelas no GitHub](https://img.shields.io/github/stars/george-gca/multi-language-al-folio)](https://github.com/george-gca/multi-language-al-folio)
 [![Forks no GitHub](https://img.shields.io/github/forks/george-gca/multi-language-al-folio)](https://github.com/george-gca/multi-language-al-folio/fork)
 
+[![Code Wiki](https://img.shields.io/badge/Code_Wiki-ask_about_repo-blue?logo=googlegemini)](https://codewiki.google/github.com/george-gca/multi-language-al-folio)
+[![DeepWiki](https://img.shields.io/badge/DeepWiki-ask_about_repo-lightcyan)](https://deepwiki.com/george-gca/multi-language-al-folio)
+
 [![en-us](https://img.shields.io/badge/read_me-en--us-blue.svg)](README.md)
 
 </div>
@@ -49,6 +52,8 @@ Execute o teste você mesmo: [Google Lighthouse PageSpeed Insights](https://page
 
 ## Índice
 
+<!--ts-->
+
 - [multi-language-al-folio](#multi-language-al-folio)
   - [Comunidade de Usuários](#comunidade-de-usuários)
   - [Lighthouse PageSpeed Insights](#lighthouse-pagespeed-insights)
@@ -58,6 +63,9 @@ Execute o teste você mesmo: [Google Lighthouse PageSpeed Insights](https://page
   - [Começando](#começando)
   - [Instalação e Implantação](#instalação-e-implantação)
   - [Personalizando](#personalizando)
+  - [Agentes do GitHub Copilot](#agentes-do-github-copilot)
+    - [Agente de Personalização](#agente-de-personalização)
+    - [Agente de Documentação](#agente-de-documentação)
   - [Recursos](#recursos)
     - [Suporte Multilíngue](#suporte-multilíngue)
     - [Modo Claro/Escuro](#modo-claroescuro)
@@ -71,6 +79,19 @@ Execute o teste você mesmo: [Google Lighthouse PageSpeed Insights](https://page
       - [Fotos, Áudio, Vídeo e mais](#fotos-áudio-vídeo-e-mais)
     - [Outros recursos](#outros-recursos)
       - [Repositórios do GitHub e estatísticas do usuário](#repositórios-do-github-e-estatísticas-do-usuário)
+      - [Temas](#temas)
+      - [Visualizações de mídia social](#visualizações-de-mídia-social)
+      - [Feed Atom (semelhante a RSS)](#feed-atom-semelhante-a-rss)
+      - [Postagens relacionadas](#postagens-relacionadas)
+      - [Verificações de qualidade de código](#verificações-de-qualidade-de-código)
+  - [Perguntas Frequentes](#perguntas-frequentes)
+  - [Contribuindo](#contribuindo)
+    - [Mantenedores](#mantenedores)
+    - [Todos os Colaboradores](#todos-os-colaboradores)
+  - [Histórico de Estrelas](#histórico-de-estrelas)
+  - [Licença](#licença)
+
+<!--te-->
 
 ## Começando
 
@@ -85,6 +106,34 @@ Para detalhes de instalação e implantação, consulte [INSTALL.md](INSTALL.pt-
 ## Personalizando
 
 Para detalhes de personalização, consulte [CUSTOMIZE.md](CUSTOMIZE.pt-br.md).
+
+## Agentes do GitHub Copilot
+
+Este repositório inclui dois agentes especializados do GitHub Copilot para melhorar sua experiência de desenvolvimento:
+
+### Agente de Personalização
+
+O **Agente de Personalização** ajuda você a personalizar seu site al-folio, oferecendo:
+
+- Orientação passo a passo para alterações de configuração
+- Modificação direta de arquivos em seu repositório
+- Explicação de conceitos técnicos em linguagem simples (ótimo para usuários sem experiência em programação)
+- Assistência com tarefas comuns, como atualizar seu CV, adicionar publicações, criar postagens de blog e personalizar temas
+
+Consulte [CUSTOMIZE.md § Agente de Personalização do GitHub Copilot](CUSTOMIZE.pt-br.md#Agente-de-Personalização-GitHub-Copilot) para obter instruções detalhadas de uso.
+
+### Agente de Documentação
+
+O **Agente de Documentação** mantém a documentação do projeto clara e atualizada, realizando:
+
+- Atualização de arquivos de documentação quando os recursos mudam
+- Redação em um estilo acessível para acadêmicos e pesquisadores
+- Manutenção da sincronização da documentação com a base de código
+- Seguindo as melhores práticas de documentação
+
+Consulte [CONTRIBUTING.md § Agentes do GitHub Copilot](CONTRIBUTING.pt-br.md#Agentes-do-GitHub-Copilot) para obter mais informações.
+
+> **Requisitos:** Ambos os agentes exigem uma assinatura do [GitHub Copilot](https://github.com/features/copilot). Para mais informações sobre o GitHub Copilot e como usar agentes, consulte a [documentação do GitHub Copilot](https://docs.github.com/en/copilot).
 
 ## Recursos
 
@@ -249,3 +298,96 @@ Você também pode usar os códigos abaixo para exibir isso em outras páginas.
 </div>
 {% endif %}
 ```
+
+---
+
+#### Temas
+
+Uma variedade de cores de tema bonitas foi selecionada para você escolher. O padrão é roxo, mas você pode alterá-lo rapidamente editando a variável `--global-theme-color` no arquivo `_sass/_themes.scss`. Outras variáveis de cor estão listadas lá também. As opções de cor de tema disponíveis podem ser encontradas em `_sass/_variables.scss`. Você também pode adicionar suas próprias cores a este arquivo, atribuindo a cada uma um nome para facilitar o uso em todo o modelo.
+
+---
+
+#### Visualizações de mídia social
+
+**al-folio** suporta imagens de visualização em mídias sociais. Para ativar essa funcionalidade, você precisa definir `serve_og_meta` para `true` em seu `_config.yml`. Depois de fazer isso, todas as páginas do seu site incluirão dados do Open Graph no elemento head HTML.
+
+Você precisará então configurar qual imagem exibir nas visualizações de mídia social do seu site. Isso pode ser configurado por página, definindo a variável de página `og_image`. Se para uma página individual essa variável não for definida, o tema usará como fallback uma variável `og_image` em todo o site, configurável em seu `_config.yml`. Nos casos específicos da página e em todo o site, a variável `og_image` precisa conter a URL da imagem que deseja exibir nas visualizações de mídia social.
+
+---
+
+#### Feed Atom (semelhante a RSS)
+
+Ele gera um feed Atom (semelhante a RSS) de suas postagens, útil para leitores de Atom e RSS. O feed é acessível simplesmente digitando após sua página inicial `/feed.xml`. Por exemplo, assumindo que o seu ponto de montagem do site seja a pasta principal, você pode digitar `yourusername.github.io/feed.xml`
+
+---
+
+#### Postagens relacionadas
+
+Por padrão, haverá uma seção de postagens relacionadas na parte inferior das postagens do blog. Estas são geradas selecionando as `max_related` postagens mais recentes que compartilham pelo menos `min_common_tags` tags com a postagem atual. Se você não quiser exibir postagens relacionadas em uma postagem específica, simplesmente adicione `related_posts: false` ao front matter da postagem. Se quiser desativar para todas as postagens, simplesmente defina `enabled` para false na seção `related_blog_posts` em `_config.yml`.
+
+---
+
+#### Verificações de qualidade de código
+
+Atualmente, executamos algumas verificações para garantir que a qualidade do código e o site gerado sejam bons. As verificações são feitas usando GitHub Actions e as seguintes ferramentas:
+
+- [Prettier](https://prettier.io/) - verificar se a formatação do código segue o guia de estilo
+- [lychee](https://lychee.cli.rs/) - verificar links quebrados
+- [Axe](https://github.com/dequelabs/axe-core) (necessário executar manualmente) - fazer testes de acessibilidade
+
+Decidimos manter as execuções do `Axe` manuais porque corrigir os problemas não é direto e pode ser difícil para pessoas sem conhecimento de desenvolvimento web.
+
+## Perguntas Frequentes
+
+Para perguntas frequentes, consulte [FAQ.pt-br.md](FAQ.pt-br.md).
+
+## Contribuindo
+
+Contribuições para multi-language-al-folio são muito bem-vindas! Antes de começar, dê uma olhada em [as orientações](CONTRIBUTING.pt-br.md).
+
+Se você gostaria de melhorar a documentação ou corrigir uma inconsistência ou bug menor, sinta-se livre para enviar um PR diretamente para `main`. Para problemas/bugs mais complexos ou solicitações de recursos, abra uma issue usando o modelo apropriado.
+
+### Mantenedores
+
+Nossos colaboradores mais ativos são bem-vindos para se juntar à equipe de mantenedores. Se estiver interessado, entre em contato!
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://maruan.alshedivat.com"><img src="https://avatars.githubusercontent.com/u/2126561?v=4" width="100px;" alt=""/><br /><sub><b>Maruan</b></sub></a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://rohandebsarkar.github.io"><img src="https://avatars.githubusercontent.com/u/50144004?v=4" width="100px;" alt=""/><br /><sub><b>Rohan Deb Sarkar</b></sub></a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://amirpourmand.ir"><img src="https://avatars.githubusercontent.com/u/32064808?v=4" width="100px;" alt=""/><br /><sub><b>Amir Pourmand</b></sub></a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://george-gca.github.io/"><img src="https://avatars.githubusercontent.com/u/31376482?v=4" width="100px;" alt=""/><br /><sub><b>George</b></sub></a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+### Todos os Colaboradores
+
+<a href="https://contrib.rocks">
+  <img src="https://contrib.rocks/image?repo=alshedivat/al-folio&max=500&columns=24" />
+</a>
+
+## Histórico de Estrelas
+
+<a href="https://star-history.com/#george-gca/multi-language-al-folio&Date">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=george-gca/multi-language-al-folio&type=Date&theme=dark" />
+    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=george-gca/multi-language-al-folio&type=Date" />
+    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=george-gca/multi-language-al-folio&type=Date" />
+  </picture>
+</a>
+
+## Licença
+
+O tema está disponível como código aberto sob os termos da [Licença MIT](https://github.com/george-gca/multi-language-al-folio/blob/main/LICENSE).
+
+Originalmente, **al-folio** foi baseado no tema [\*folio](https://github.com/bogoli/-folio) (publicado por [Lia Bogoev](https://liabogoev.com) e sob a licença MIT). Desde então, ele recebeu uma reescrita completa dos estilos e muitos recursos legais adicionais.

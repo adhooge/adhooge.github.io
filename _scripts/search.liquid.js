@@ -7,7 +7,7 @@ permalink: /assets/js/search-data.js
 {% assign lang = site.active_lang %}
 {% endif %}
 const currentUrl = window.location.href;
-const siteUrl = "{{ site.url }}"; 
+const siteUrl = "{{ site.url }}";
 let updatedUrl = currentUrl.replace("{{ site.url }}{{ site.baseurl }}", "");
 if (currentUrl.length == updatedUrl.length && currentUrl.startsWith("http://127.0.0.1")) {
   const otherSiteUrl = siteUrl.replace("localhost", "127.0.0.1");
@@ -119,6 +119,10 @@ ninja.data = [
           {%- assign social_id = "social-acm" -%}
           {%- assign social_title = "ACM DL" -%}
           {%- capture social_url %}"https://dl.acm.org/profile/{{ social[1] }}/"{% endcapture -%}
+        {%- when "arxiv_id" -%}
+          {%- assign social_id = "social-arxiv" -%}
+          {%- assign social_title = "arXiv" -%}
+          {%- capture social_url %}"https://arxiv.org/a/{{ social[1] }}.html"{% endcapture -%}
         {%- when "blogger_url" -%}
           {%- assign social_id = "social-blogger" -%}
           {%- assign social_title = "Blogger" -%}
@@ -127,6 +131,10 @@ ninja.data = [
           {%- assign social_id = "social-bluesky" -%}
           {%- assign social_title = "Bluesky" -%}
           {%- capture social_url %}"{{ social[1] }}"{% endcapture -%}
+        {%- when "cv_pdf" -%}
+          {%- assign social_id = "social-cv" -%}
+          {%- assign social_title = "CV" -%}
+          {%- capture social_url %}{% if social[1] contains '://' %}"{{ social[1] }}"{% else %}"{{ social[1] | prepend: '/' | prepend: site.active_lang | prepend: '/assets/pdf/' | prepend: site.baseurl }}"{% endif %}{% endcapture -%}
         {%- when "dblp_url" -%}
           {%- assign social_id = "social-dblp" -%}
           {%- assign social_title = "DBLP" -%}
@@ -155,6 +163,10 @@ ninja.data = [
           {%- assign social_id = "social-gitlab" -%}
           {%- assign social_title = "GitLab" -%}
           {%- capture social_url %}"https://gitlab.com/{{ social[1] }}"{% endcapture -%}
+        {%- when "hal_id" -%}
+          {%- assign social_id = "social-hal" -%}
+          {%- assign social_title = "HAL" -%}
+          {%- capture social_url %}"https://cv.hal.science/{{ social[1] }}"{% endcapture -%}
         {%- when "ieee_id" -%}
           {%- assign social_id = "social-ieee" -%}
           {%- assign social_title = "IEEE Xplore" -%}

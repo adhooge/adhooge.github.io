@@ -1,6 +1,6 @@
 services:
   jekyll:
-    image: georgegca/multi-language-al-folio:v1.14.4
+    image: amirpourmand/al-folio:v1.16.2
     build: .
     ports:
       - 8080:8080
