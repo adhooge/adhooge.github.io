@@ -1,6 +1,6 @@
 
 const currentUrl = window.location.href;
-const siteUrl = "https://adhooge.github.io"; 
+const siteUrl = "https://adhooge.github.io";
 let updatedUrl = currentUrl.replace("https://adhooge.github.io", "");
 if (currentUrl.length == updatedUrl.length && currentUrl.startsWith("http://127.0.0.1")) {
   const otherSiteUrl = siteUrl.replace("localhost", "127.0.0.1");
@@ -88,22 +88,7 @@ ninja.data = [{
             },},{id: "news-a-simple-inline-announcement-with-markdown-emoji-sparkles-smile",
           title: 'A simple inline announcement with Markdown emoji! :sparkles: :smile:',
           description: "",
-          section: "actualités",},{id: "projects-project-7",
-          title: 'project 7',
-          description: "with background image",
-          section: "projets",handler: () => {
-              window.location.href = "/fr/projects/7_project/";
-            },},{id: "projects-project-8",
-          title: 'project 8',
-          description: "an other project with a background image and giscus comments",
-          section: "projets",handler: () => {
-              window.location.href = "/fr/projects/8_project/";
-            },},{id: "projects-project-9",
-          title: 'project 9',
-          description: "another project with an image 🎉",
-          section: "projets",handler: () => {
-              window.location.href = "/fr/projects/9_project/";
-            },},{id: "projects-project-1",
+          section: "actualités",},{id: "projects-project-1",
           title: 'project 1',
           description: "with background image",
           section: "projets",handler: () => {
@@ -133,7 +118,29 @@ ninja.data = [{
           description: "a project with no image",
           section: "projets",handler: () => {
               window.location.href = "/fr/projects/6_project/";
+            },},{id: "projects-project-7",
+          title: 'project 7',
+          description: "with background image",
+          section: "projets",handler: () => {
+              window.location.href = "/fr/projects/7_project/";
+            },},{id: "projects-project-8",
+          title: 'project 8',
+          description: "an other project with a background image and giscus comments",
+          section: "projets",handler: () => {
+              window.location.href = "/fr/projects/8_project/";
+            },},{id: "projects-project-9",
+          title: 'project 9',
+          description: "another project with an image 🎉",
+          section: "projets",handler: () => {
+              window.location.href = "/fr/projects/9_project/";
             },},{
+        id: 'social-cv',
+        title: 'CV',
+        section: 'réseaux sociaux',
+        handler: () => {
+          window.open("/assets/pdf/fr//assets/pdf/[LANG]/example_pdf.pdf", "_blank");
+        },
+      },{
         id: 'social-email',
         title: 'envoyer un courriel',
         section: 'réseaux sociaux',
