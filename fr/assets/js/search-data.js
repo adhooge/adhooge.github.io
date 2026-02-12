@@ -134,18 +134,11 @@ ninja.data = [{
           section: "projets",handler: () => {
               window.location.href = "/fr/projects/9_project/";
             },},{
-        id: 'social-cv',
-        title: 'CV',
-        section: 'réseaux sociaux',
-        handler: () => {
-          window.open("/assets/pdf/fr//assets/pdf/[LANG]/example_pdf.pdf", "_blank");
-        },
-      },{
         id: 'social-email',
         title: 'envoyer un courriel',
         section: 'réseaux sociaux',
         handler: () => {
-          window.open("mailto:%61%6C%65%78%61%6E%64%72%65.%64%68%6F%6F%67%65@%75%6E%69%76-%6C%69%6C%6C%65.%66%72", "_blank");
+          window.open("mailto:%61%6C%65%78%61%6E%64%72%65.%64%68%6F%6F%67%65@%61%6C%67%6F%6D%75%73.%66%72", "_blank");
         },
       },{
         id: 'social-github',
@@ -167,13 +160,6 @@ ninja.data = [{
         section: 'réseaux sociaux',
         handler: () => {
           window.open("https://www.linkedin.com/in/alexandre-d-hooge-a5117a156", "_blank");
-        },
-      },{
-        id: 'social-mastodon',
-        title: 'Mastodon',
-        section: 'réseaux sociaux',
-        handler: () => {
-          window.open("https://mastodon.zaclys.com/@soubaboy", "_blank");
         },
       },{
         id: 'social-orcid',
