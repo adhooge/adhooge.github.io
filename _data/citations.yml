@@ -1,5 +1,5 @@
 metadata:
-  last_updated: '2026-03-27'
+  last_updated: '2026-05-01'
 papers:
   aWrwV9IAAAAJ:2osOgNQ5qMEC:
     citations: 2
@@ -30,7 +30,7 @@ papers:
     title: Conditional Generation of Bass Guitar Tablature for Guitar Accompaniment in Western Popular Music
     year: '2025'
   aWrwV9IAAAAJ:Y0pCki6q_DkC:
-    citations: 7
+    citations: 8
     title: 'Towards explainable and interpretable musical difficulty estimation: a parameter-efficient approach'
     year: '2024'
   aWrwV9IAAAAJ:YsMSGLbcyi4C:
