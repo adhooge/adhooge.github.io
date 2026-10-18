@@ -1,6 +1,6 @@
 # adhooge.github.io
 
-Personal website of [Adrien Hooge](https://adhooge.github.io), built on a customized version of the [multi-language-al-folio](https://github.com/george-gca/multi-language-al-folio) theme (a multilingual fork of the [al-folio](https://github.com/alshedivat/al-folio) Jekyll theme for academics).
+Personal website of [Alexandre Hooge](https://adhooge.github.io), built on a customized version of the [multi-language-al-folio](https://github.com/george-gca/multi-language-al-folio) theme (a multilingual fork of the [al-folio](https://github.com/alshedivat/al-folio) Jekyll theme for academics).
 
 This repository has two remotes:
 
