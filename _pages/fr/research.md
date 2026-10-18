@@ -24,9 +24,8 @@ nav_order: 7
 - 19 Déc.  2023 : Présentation d'un poster sur la _Continuation de guitare rythmique_ à la journée [DMRN+18](https://www.qmul.ac.uk/dmrn/dmrn18/).
 - 14 Sept. 2023 : Présentation sur les tablatures de guitare pour le groupe [__MaDICS' Musiscale__](https://www.madics.fr/ateliers/musiscale/).
 
-### Relecture d'articles
+### Service scientifique
 
-Depuis 2024, j'ai été relecteur d'articles pour les conférences [ISMIR](https://ismir.net/conferences/) et [ICASSP](https://ieeeicassp.org/), ainsi que les workshops [LAMIR](https://lamir-workshop.github.io/) et
-[HCMIR](https://sites.google.com/view/hcmir25/home).
-Depuis 2025, je suis également relecteur pour le workshop
-[EAIM](https://amaai-lab.github.io/EAIM2026/) à AAAI.
+**Conférences** Relecteur pour [ISMIR](https://ismir.net/conferences/), [ICASSP](https://ieeeicassp.org/), [LAMIR](https://lamir-workshop.github.io/), [HCMIR](https://sites.google.com/view/hcmir25/home), [EAIM](https://amaai-lab.github.io/EAIM2026/) et [NCMMSC](https://www.ncmmsc.org.cn/en/).
+
+**Journaux** Relecteur pour [TISMIR](https://transactions.ismir.net/).

@@ -24,7 +24,8 @@ nav_order: 7
 - 19th Dec.  2023: Poster Presentation on _Rhythm Guitar Continuation_ at [DMRN+18](https://www.qmul.ac.uk/dmrn/dmrn18/).
 - 14th Sept. 2023: Talk on guitar tablatures for the [__MaDICS' Musiscale__](https://www.madics.fr/ateliers/musiscale/) group.
 
-### Paper Reviews
+### Scientific Service
 
-Since 2024, I have been a reviewer for the [ISMIR](https://ismir.net/conferences/) conference, the [ICASSP](https://ieeeicassp.org/) conference, and the [LAMIR](https://lamir-workshop.github.io/) and
-[HCMIR](https://sites.google.com/view/hcmir25/home) Workshops. Since 2025, I am also a reviewer for the [EAIM](https://amaai-lab.github.io/EAIM2026/) workshop at AAAI.
+**Conferences** Reviewer for [ISMIR](https://ismir.net/conferences/), [ICASSP](https://ieeeicassp.org/), [LAMIR](https://lamir-workshop.github.io/), [HCMIR](https://sites.google.com/view/hcmir25/home), [EAIM](https://amaai-lab.github.io/EAIM2026/), and [NCMMSC](https://www.ncmmsc.org.cn/en/).
+
+**Journals** Reviewer for [TISMIR](https://transactions.ismir.net/).
