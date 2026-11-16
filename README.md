@@ -60,26 +60,21 @@ GitHub Actions will rebuild and redeploy the site automatically.
 
 ## Testing locally
 
-Before pushing changes, build and preview the site locally. Two options are available.
-
-### Option A: Ruby + Bundler
-
-Requires Ruby and Bundler (see [INSTALL.md](INSTALL.md) for setup details):
-
-```bash
-bundle install
-bundle exec jekyll serve --livereload
-```
-
-Then open [http://localhost:4000](http://localhost:4000) in your browser. The site reloads automatically when you edit files.
-
-### Option B: Docker
+Before pushing changes, build and preview the site locally with Docker:
 
 ```bash
 docker compose up
 ```
 
 Then open [http://localhost:8080](http://localhost:8080) in your browser.
+
+---
+
+## Adding publications
+
+Add each publication as a BibTeX entry in [`_bibliography/papers.bib`](_bibliography/papers.bib). Use a unique citation key and include the publication's title, authors, year, and venue (for example, `journal` or `booktitle`). Keep author names in `Last, First` format, and use BibTeX escapes for accented characters when needed, such as `D{\'e}guernel`. Optional fields such as `doi`, `url`, `pdf`, `code`, and `preview` add links and details to the publication listing; use the field names and conventions of nearby entries.
+
+The publications page groups entries by year with the newest first. After editing the bibliography, run `docker compose up` and check the publications page at [http://localhost:8080/publications/](http://localhost:8080/publications/) to confirm the entry parses and renders correctly.
 
 ---
 

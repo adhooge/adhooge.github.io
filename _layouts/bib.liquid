@@ -189,7 +189,7 @@
     <!-- Links/Buttons -->
     <div class="links">
       {% if entry.award %}
-        <a class="award btn btn-sm z-depth-0" role="button">
+        <a class="award btn btn-sm z-depth-0" role="button"{% if entry.award_url %} href="{{ entry.award_url }}"{% endif %}>
           {%- if entry.award_name %}{{ entry.award_name }}{% else %}{{ site.data[site.active_lang].strings.bibliography.awarded }}{% endif -%}
         </a>
       {% endif %}
@@ -370,7 +370,7 @@
     {% if entry.award %}
       <!-- Hidden Award block -->
       <div class="award hidden d-print-inline">
-        <p>{{ entry.award | markdownify }}</p>
+        <p>{% if entry.award_url %}<a href="{{ entry.award_url }}">{{ entry.award }}</a>{% else %}{{ entry.award | markdownify }}{% endif %}</p>
       </div>
     {% endif %}
 
